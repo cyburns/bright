@@ -27,7 +27,7 @@ export default function ProfileHeader() {
 
   if (!currentUser) return null;
 
-  if (isUserLoading || !userProfile)
+  if (isUserLoading || !userProfile) {
     return (
       <div className="fixed top-5 right-5 flex items-center justify-center transition-all dark:bg-gray-950">
         <Link href={path} className="flex flex-row">
@@ -37,7 +37,8 @@ export default function ProfileHeader() {
         <Skeleton variant="circular" sx={{ width: "3rem", height: "3rem" }} />
       </div>
     );
-
+  }
+  
   return (
     <button className="fixed top-5 right-[1rem] flex items-center justify-center transition-all ">
       <Link
