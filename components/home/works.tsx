@@ -1,39 +1,95 @@
 "use client";
 
-import React from "react";
-import Accordion from "./accordion";
+import React, { useState } from "react";
 import { useSectionInView } from "@/lib/hooks";
 
+const featuredWorks = [
+  {
+    metaOne: "AUDIA",
+    title: "SHARE MUSIC",
+    metaTwo: "MOBILE",
+    src: "getaudia.com.png",
+    color: "#4cded8",
+  },
+  {
+    metaOne: "REACTYPE",
+    title: "NO-CODE BUILDER",
+  metaTwo: "WEB",
+    src: "reactype.dev.png",
+    color: "#8C8C8C",
+  },
+  {
+    metaOne: "PORTFOLIO",
+    title: "VOCTORY MODE",
+    metaTwo: "SHOWCASE",
+    src: "port.com.png",
+    color: "#992db4",
+  },
+
+  {
+    metaOne: "PRESS SPORTS",
+    title: "GET RECRUITED",
+    metaTwo: "MOBILE",
+    src: "press.com.png",
+    color: "#EFE8D3",
+  },
+];
+
 const Works = () => {
+  const [activeSection, setActiveSection] = useState(1);
+  const [activeWork, setActiveWork] = useState<null | number>(null);
+
   const { ref } = useSectionInView("Works");
 
   return (
-    <div
-      ref={ref}
-      id="works"
-      className="p-4 bg-white dark:bg-black rounded-lg mb-32 sm:mb-48"
-    >
-      <h2 className="font-medium mb-8 text-[3rem] sm:text-[5rem] uppercase leading-[1] text-center">
-        selected works
-      </h2>
-
-      <div className="max-w-[50rem]">
-        <Accordion
-          title="Audia"
-          link="https://www.getaudia.com/"
-          answer="Audia is a mobile app that lets users share and discover new music with friends, find communities, and grow businesses around music. Audia uses React Native with TypeScript and Expo Router, it supports both iOS and Android. Audia leverages Google Cloud storage for a scalable, secure data system, reducing retrieval times by 50%. It integrates multiple APIs to enhance user experience, with a Node and Express server ensuring efficient and safe data flow. A Figma vision board guides high-standard UI/UX design, while test-driven development ensures app security and minimizes technical debt."
-        />
-        <Accordion
-          title="ReacType"
-          link="https://www.reactype.dev/"
-          answer="ReacType is a prototyping tool that allows users to visualize application architecture through a drag-and-drop interface and real-time code preview, enhancing collaboration. By restructuring file architecture and migrating to Vite, bundle time improved by 30x. TypeScript conversion rates rose from 75% to over 95%. Socket.IO enabled real-time communication, while industry-leading authentication with OAuth, bcrypt, and JWTs ensured data security. VideoSDK integration provided a robust video meeting interface. Jest increased test coverage to over 80%, and a sleek landing page was crafted using MUI, Tailwind.css, Shadcd/ui, and Aceturnity within a Next.js structure. Redux and Redux Toolkit improved state and data flow management."
-        />
-        <Accordion
-          title="Press Sports"
-          link="https://presssportsapp.com/"
-          answer="Developed a dynamic website with React and TypeScript, enabling efficient state management and tailored user data display using reusable components for optimized rendering performance, enhancing UI and UX. Collaborated with the engineering team to develop the React Native mobile app, ensuring design continuity from web to mobile. Contributed to the app's growth, acquiring over 300,000 users with a 4.9-star rating from 11.8k reviews."
-        />
+    <div ref={ref} id="works" className="mb-[50rem] w-full">
+      <div className="flex flex-row justify-center">
+        <button
+          onClick={() => setActiveSection(0)}
+          className={`${
+            activeSection === 0 ? null : "text-opacity-40"
+          } font-medium mb-8 text-xl uppercase leading-[1] text-center text-black dark:text-white hover:text-opacity-60 transition`}
+        >
+          LATEST WORKS
+        </button>
+        <p className="mx-7">/</p>
+        <button
+          onClick={() => setActiveSection(1)}
+          className={`${
+            activeSection === 1 ? null : "text-opacity-40"
+          } font-medium mb-8 text-xl uppercase leading-[1] text-center text-black dark:text-white hover:text-opacity-6 transition`}
+        >
+          FEATURED WORKS
+        </button>
       </div>
+
+      <ul className="w-full relative h-[70px]">
+        {featuredWorks.map((work, index) => (
+          <li
+            key={index}
+            onMouseEnter={() => setActiveWork(index)}
+            onMouseLeave={() => setActiveWork(null)}
+            className={`w-full h-full relative flex items-center justify-between group my-1 overflow-hidden transition duration-300 ${
+              activeWork !== null && activeWork !== index ? "opacity-40" : null
+            }`}
+          >
+            <p className={`text-xs font-thin`}>{work.metaOne}</p>
+            <div className="relative w-full h-[70px] overflow-hidden">
+              <h1
+                className={`text-base absolute inset-0 flex items-center justify-center h-[70px] text-[4.8vw] text-center transition-transform duration-300 group-hover:-translate-y-[100%]`}
+              >
+                {work.title}
+              </h1>
+              <h1
+                className={`text-base absolute inset-0 flex items-center justify-center h-[70px] text-[4.8vw] text-center transition-transform duration-300 translate-y-[100%] group-hover:translate-y-0`}
+              >
+                {work.title}
+              </h1>
+            </div>
+            <p className={`text-xs font-thin`}>{work.metaTwo}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

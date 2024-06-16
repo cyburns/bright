@@ -1,6 +1,5 @@
 import Header from "@/components/navbar/header";
 import "./globals.css";
-import { Montserrat } from "next/font/google";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import Footer from "@/components/home/footer";
 import ThemeSwitch from "@/components/home/theme-switch";
@@ -8,8 +7,14 @@ import ThemeContextProvider from "@/context/theme-context";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
 import ProfileHeader from "@/components/profile-header/profile-header";
+import Mouse from "@/components/ui/Mouse";
+import { Poppins } from "next/font/google";
 
-const mont = Montserrat({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+});
+
 export const metadata = {
   title: "BRIGHT",
   description: "Fast web development",
@@ -37,7 +42,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${mont.className} bg-white text-gray-950 relative  dark:bg-black dark:text-white dark:text-opacity-90`}
+        className={`${poppins.className} bg-white text-gray-950 relative  dark:bg-black dark:text-white dark:text-opacity-90`}
       >
         <ThemeContextProvider>
           <ActiveSectionContextProvider>
@@ -45,6 +50,7 @@ export default function RootLayout({
             <Toaster position="top-right" />
             <ProfileHeader />
             <ThemeSwitch />
+            <Mouse />
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
       </body>
