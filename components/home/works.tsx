@@ -92,7 +92,7 @@ const Works = () => {
       </div>
 
       <ul className="w-full relative h-[70px]">
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {works.map((work, index) => (
             <li
               key={index}
@@ -109,6 +109,7 @@ const Works = () => {
               }`}
             >
               <motion.div
+                key={`${work.title}-${index}`}
                 initial={{ y: 100 }}
                 animate={{ y: 0 }}
                 exit={{ y: -100 }}
