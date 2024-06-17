@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useSectionInView } from "@/lib/hooks";
 import Modal from "./Modal";
+import { motion, AnimatePresence } from "framer-motion";
 
 const featuredWorks = [
   {
@@ -10,28 +11,52 @@ const featuredWorks = [
     title: "SHARE MUSIC",
     metaTwo: "MOBILE",
     src: "getaudia.com.png",
-    color: "#4cded8",
   },
   {
     metaOne: "REACTYPE",
     title: "NO-CODE BUILDER",
     metaTwo: "WEB",
     src: "reactype.dev.png",
-    color: "#8C8C8C",
   },
   {
     metaOne: "PORTFOLIO",
     title: "VOCTORY MODE",
     metaTwo: "SHOWCASE",
     src: "port.com.png",
-    color: "#992db4",
   },
   {
     metaOne: "PRESS SPORTS",
     title: "GET RECRUITED",
     metaTwo: "MOBILE",
-    src: "press.com.png",
-    color: "#EFE8D3",
+    src: "officestudio.png",
+  },
+];
+
+const selectedWorkds = [
+  {
+    metaOne: "CODESHARE",
+    title: "GEEK OUT",
+    metaTwo: "WEB",
+    src: "Codeshare-port-pic.png",
+  },
+  {
+    metaOne: "PORTFOLIO",
+    title: "PINK AND GREEN",
+    metaTwo: "WEB",
+    src: "cpd.com2.png",
+  },
+  {
+    metaOne: "SEATR",
+    title: "LOVE OF FOOD",
+    metaTwo: "MOBILE",
+    src: "seatr.png",
+  },
+
+  {
+    metaOne: "OFFICE STUDIO",
+    title: "DESIGN STUDIO",
+    metaTwo: "WEB",
+    src: "officestudio.png",
   },
 ];
 
@@ -42,9 +67,11 @@ const Works = () => {
 
   const { ref } = useSectionInView("Works");
 
+  const works = activeSection === 0 ? selectedWorkds : featuredWorks;
+
   return (
     <div ref={ref} id="works" className="mb-[50rem] w-full">
-      <div className="flex flex-row justify-center">
+      <div className="flex flex-row justify-center mb-5">
         <button
           onClick={() => setActiveSection(0)}
           className={`${
@@ -65,7 +92,7 @@ const Works = () => {
       </div>
 
       <ul className="w-full relative h-[70px]">
-        {featuredWorks.map((work, index) => (
+        {works.map((work, index) => (
           <li
             key={index}
             onMouseEnter={() => {
@@ -98,7 +125,7 @@ const Works = () => {
         ))}
       </ul>
 
-      <Modal modal={modal} projects={featuredWorks} />
+      <Modal modal={modal} projects={works} />
     </div>
   );
 };
