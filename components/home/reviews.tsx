@@ -1,6 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Cormorant_Garamond } from "next/font/google";
+
+const corm = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+});
 
 const reviewsArray = [
   {
@@ -67,7 +73,7 @@ export function Reviews() {
   }, []);
 
   return (
-    <div className="w-full h-[60vh] max-w-[50rem] mx-auto p-4 relative flex flex-col z-50">
+    <div className="w-full h-[60vh] p-4 relative flex flex-col z-50">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
@@ -92,12 +98,12 @@ export function Reviews() {
           <h1 className="text-[#a3a3a7] text-[5rem] font-bold mb-[-2rem]">
             ❛❛
           </h1>
-          <h2 className="text-black dark:text-white text-3xl mb-8">
+          <h2 className={`${corm.className} text-black dark:text-white text-2xl sm:text-4xl mb-8 max-w-[70vw]`}>
             {reviewsArray[currentIndex].text}
           </h2>
           <div className="flex flex-row justify-end">
             <div className="flex flex-col justify-center items-end text-right">
-              <h3 className="text-black dark:text-white text-xl font-semibold">
+              <h3 className={` text-black dark:text-white text-xl font-semibold`}>
                 {reviewsArray[currentIndex].name}
               </h3>
               <h4 className="text-black dark:text-[#a3a3a7] text-sm sm:text-xl">

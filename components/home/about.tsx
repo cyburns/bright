@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { useSectionInView } from "@/lib/hooks";
-import Calendar from "@/components/home/calendar";
-import { FlipWords } from "../ui/flip-words";
+import { useInView, motion } from "framer-motion";
 import { Cormorant_Garamond } from "next/font/google";
 
 const corm = Cormorant_Garamond({
@@ -11,24 +10,74 @@ const corm = Cormorant_Garamond({
   weight: ["300", "400", "700"],
 });
 
+const phrase =
+  "We are creatives who focus on quality work that offers powerful solutions, combining great designs with functionality.";
+
+export const slideUp = {
+  initial: {
+    y: "100%",
+  },
+  open: (i: number) => ({
+    y: "0%",
+    transition: { duration: 0.5, delay: 0.02 * i },
+  }),
+  closed: {
+    y: "100%",
+    transition: { duration: 0.5 },
+  },
+};
+
+export const opacity = {
+  initial: {
+    opacity: 0,
+  },
+  open: {
+    opacity: 1,
+    transition: { duration: 0.5 },
+  },
+  closed: {
+    opacity: 0,
+    transition: { duration: 0.5 },
+  },
+};
+
 export default function About() {
-  const { ref } = useSectionInView("About");
-  const words = ["affordable", "beautiful", "responsive", "modern"];
+  const about = useRef(null);
+  const isInView = useInView(about);
 
   return (
     <section
-      ref={ref}
-      className=" leading-8 scroll-mt-28 flex flex-col w-full sm:flex-row mt-32"
+      ref={about}
+      className="leading-8 scroll-mt-28 flex flex-col w-full sm:flex-row sm:mt-32 text-white mix-blend-difference"
       id="about"
     >
-      <div className="dark:border-white w-full">
-        <h1 className="text-4xl font-medium mb-1 mt-7">WHO WE ARE</h1>
+      <div className="w-full">
+        <h1 className="text-xl sm:text-4xl font-extralight sm:font-medium mb-1 mt-7">
+        ✦ WHO WE ARE
+        </h1>
       </div>
       <div
-        className={`${corm.className} max-w-[50vw] sm:mt-0 mt-12 text-[3vw] !leading-[1.1] font-medium`}
+        className={`${corm.className} mt-4 sm:mt-0  text-[10vw] sm:text-[3vw] !leading-[1.1] font-medium`}
       >
-        We are creatives who focus on creating quality work that offers powerful
-        solutions, combining great designs with functionality.
+        <motion.span>
+          {phrase.split(" ").map((word, index) => (
+            <span
+              key={index}
+              className="relative overflow-hidden inline-flex mr-2 pb-1"
+            >
+              <motion.span
+                variants={slideUp}
+                custom={index}
+                key={index}
+                initial="initial"
+                animate={isInView ? "open" : "closed"}
+                className="inline-block"
+              >
+                {word}{" "}
+              </motion.span>
+            </span>
+          ))}
+        </motion.span>
       </div>
     </section>
   );

@@ -3,14 +3,15 @@
 import React, { useEffect, useState } from "react";
 import Hero from "@/components/home/Hero";
 import Navbar from "@/components/home/Navbar";
-import About from "@/components/home/about";
+import About from "@/components/home/About";
 import Contact from "@/components/home/contact";
 import Footer from "@/components/home/footer";
 import InfiniteWords from "@/components/home/infinite";
 import Payment from "@/components/home/payment";
-import { Reviews } from "@/components/home/reviews";
+import { Reviews } from "@/components/home/Reviews";
 import Works from "@/components/home/works";
 import Services from "@/components/home/Services";
+import Video from "@/components/home/Video";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,9 +36,6 @@ export default function Home() {
       <Services />
       <InfiniteWords />
       <Works />
-      <Payment />
-      <Reviews />
-      <Contact />
       <Footer />
     </main>
   );

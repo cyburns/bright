@@ -20,9 +20,9 @@ const Hero = () => {
 
   return (
     <div className="h-screen relative text-black dark:text-white">
-      <div className="absolute w-full h-full">
+      <div className="absolute w-full h-full z-50 min-w-max">
         <h1
-          className={`absolute right-1/4 top-1/4 transform translate-x-2/4 -translate-y-1/4 text-4xl font-light ${corm.className}`}
+          className={`absolute right-1/4 top-1/2 sm:top-1/4 transform translate-x-1/4  sm:translate-x-2/4 -translate-y-1/4 text-2xl sm:text-4xl font-light ${corm.className}`}
         >
           Blending
           <FlipWords words={words} /> <br />

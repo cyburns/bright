@@ -9,25 +9,25 @@ const featuredWorks = [
   {
     metaOne: "AUDIA",
     title: "SHARE MUSIC",
-    metaTwo: "MOBILE",
+    metaTwo: "[MOBILE]",
     src: "getaudia.com.png",
   },
   {
     metaOne: "REACTYPE",
     title: "NO-CODE BUILDER",
-    metaTwo: "WEB",
+    metaTwo: "[WEB]",
     src: "reactype.dev.png",
   },
   {
     metaOne: "PORTFOLIO",
     title: "VOCTORY MODE",
-    metaTwo: "SHOWCASE",
+    metaTwo: "[SHOWCASE]",
     src: "port.com.png",
   },
   {
     metaOne: "PRESS SPORTS",
     title: "GET RECRUITED",
-    metaTwo: "MOBILE",
+    metaTwo: "[MOBILE]",
     src: "officestudio.png",
   },
 ];
@@ -36,26 +36,26 @@ const selectedWorkds = [
   {
     metaOne: "CODESHARE",
     title: "GEEK OUT",
-    metaTwo: "WEB",
+    metaTwo: "[WEB]",
     src: "Codeshare-port-pic.png",
   },
   {
     metaOne: "PORTFOLIO",
     title: "PINK AND GREEN",
-    metaTwo: "WEB",
+    metaTwo: "[WEB]",
     src: "cpd.com2.png",
   },
   {
     metaOne: "SEATR",
     title: "LOVE OF FOOD",
-    metaTwo: "MOBILE",
+    metaTwo: "[MOBILE]",
     src: "seatr.png",
   },
 
   {
     metaOne: "OFFICE STUDIO",
     title: "DESIGN STUDIO",
-    metaTwo: "WEB",
+    metaTwo: "[WEB]",
     src: "officestudio.png",
   },
 ];
@@ -70,7 +70,7 @@ const Works = () => {
   const works = activeSection === 0 ? selectedWorkds : featuredWorks;
 
   return (
-    <div ref={ref} id="works" className="mb-[50rem] w-full">
+    <div ref={ref} id="works" className="mb-[25rem] w-full">
       <div className="flex flex-row justify-center mb-5">
         <button
           onClick={() => setActiveSection(0)}
@@ -78,7 +78,7 @@ const Works = () => {
             activeSection === 0 ? null : "text-opacity-40"
           } font-medium mb-8 text-xl uppercase leading-[1] text-center text-black dark:text-white hover:text-opacity-60 transition`}
         >
-          LATEST WORKS
+          ✦ LATEST WORKS
         </button>
         <p className="mx-7">/</p>
         <button
@@ -87,42 +87,52 @@ const Works = () => {
             activeSection === 1 ? null : "text-opacity-40"
           } font-medium mb-8 text-xl uppercase leading-[1] text-center text-black dark:text-white hover:text-opacity-6 transition`}
         >
-          FEATURED WORKS
+          ✦ FEATURED WORKS
         </button>
       </div>
 
       <ul className="w-full relative h-[70px]">
-        {works.map((work, index) => (
-          <li
-            key={index}
-            onMouseEnter={() => {
-              setModal({ active: true, index });
-              setActiveWork(index);
-            }}
-            onMouseLeave={() => {
-              setModal({ active: false, index });
-              setActiveWork(null);
-            }}
-            className={`w-full h-full relative flex items-center justify-between group my-1 overflow-hidden transition duration-300 ${
-              activeWork !== null && activeWork !== index && "opacity-40"
-            }`}
-          >
-            <p className={`text-xs font-thin`}>{work.metaOne}</p>
-            <div className="relative w-full h-[70px] overflow-hidden">
-              <h1
-                className={`text-base absolute inset-0 flex items-center justify-center h-[70px] text-[4.8vw] text-center transition-transform duration-300 group-hover:-translate-y-[100%]`}
+        <AnimatePresence>
+          {works.map((work, index) => (
+            <li
+              key={index}
+              onMouseEnter={() => {
+                setModal({ active: true, index });
+                setActiveWork(index);
+              }}
+              onMouseLeave={() => {
+                setModal({ active: false, index });
+                setActiveWork(null);
+              }}
+              className={`w-full h-full relative flex items-center justify-between group my-1 overflow-hidden transition duration-300 ${
+                activeWork !== null && activeWork !== index && "opacity-40"
+              }`}
+            >
+              <motion.div
+                initial={{ y: 100 }}
+                animate={{ y: 0 }}
+                exit={{ y: -100 }}
+                transition={{ duration: 0.5 }}
+                className="w-full h-full flex items-center justify-center"
               >
-                {work.title}
-              </h1>
-              <h1
-                className={`text-base absolute inset-0 flex items-center justify-center h-[70px] text-[4.8vw] text-center transition-transform duration-300 translate-y-[100%] group-hover:translate-y-0`}
-              >
-                {work.title}
-              </h1>
-            </div>
-            <p className={`text-xs font-thin`}>{work.metaTwo}</p>
-          </li>
-        ))}
+                <p className={`text-xs font-thin`}>{work.metaOne}</p>
+                <div className="relative w-full h-[70px] overflow-hidden">
+                  <h1
+                    className={`text-base absolute inset-0 flex items-center justify-center h-[70px] text-[3rem] md:text-[5rem] lg:text-[6rem] text-center transition-transform duration-300 group-hover:-translate-y-[100%]`}
+                  >
+                    {work.title}
+                  </h1>
+                  <h1
+                    className={`text-base absolute inset-0 flex items-center justify-center h-[70px] text-[3rem] md:text-[5rem] lg:text-[6rem] text-center transition-transform duration-300 translate-y-[100%] group-hover:translate-y-0`}
+                  >
+                    {work.title}
+                  </h1>
+                </div>
+                <p className={`text-xs font-thin`}>{work.metaTwo}</p>
+              </motion.div>
+            </li>
+          ))}
+        </AnimatePresence>
       </ul>
 
       <Modal modal={modal} projects={works} />
