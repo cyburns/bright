@@ -84,14 +84,11 @@ export const InfiniteCards = ({
         )}
       >
         {items.map((item, idx) => (
-          <li
-            key={idx}
-            className="max-w-full relative flex-shrink-0"
-          >
+          <li key={idx} className="max-w-full relative flex-shrink-0">
             <blockquote>
               <div className="relative z-1 flex flex-row items-center">
                 <span className="flex flex-col gap-1">
-                  <span className="text-[8rem] sm:text-[15rem] leading-[1.6] mr-24  hover:hero-gradient-text text-black  font-medium">
+                  <span className="text-[8rem] sm:text-[15rem] leading-[1.6] mr-24  hover:hero-gradient-text text-black dark:text-white  font-medium">
                     {item.name}
                   </span>
                 </span>

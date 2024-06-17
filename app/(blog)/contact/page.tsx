@@ -1,12 +1,12 @@
 import React from "react";
-import About from "@/components/home/About";
-import BrightHeaderText from "@/components/ui/bright-header-text";
+import Contact from "@/components/home/Contact";
 
 const page = () => {
   return (
     <div className="flex flex-col items-center px-4 pt-32 mb-32">
-      <BrightHeaderText />
-      <About />
+      <div className="mt-56">
+        <Contact />
+      </div>
     </div>
   );
 };

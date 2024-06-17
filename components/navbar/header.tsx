@@ -70,8 +70,8 @@ export default function Header() {
   };
 
   return (
-    <div className="z-[999] ">
-      <aside className="invisible sm:visible fixed h-screen bg-white dark:bg-black z-[999]">
+    <div className="flex">
+      <aside className="invisible sm:visible fixed h-screen bg-white dark:bg-black">
         <nav
           className={`ml-5 border-r border-[#EFEFEF] dark:border-[#161616] h-screen transition-all duration-300 ${
             isNavOpen ? "w-[19rem]" : "w-[3.5rem]"

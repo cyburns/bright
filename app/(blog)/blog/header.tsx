@@ -6,7 +6,7 @@ import Link from "next/link";
 import { IoCreateOutline } from "react-icons/io5";
 import { getAuth } from "firebase/auth";
 
-const Header = () => {
+const BlogHeader = () => {
   const [path, setPath] = useState("signup");
 
   const auth = getAuth();
@@ -39,4 +39,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default BlogHeader;

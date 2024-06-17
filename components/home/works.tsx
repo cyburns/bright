@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState, forwardRef } from "react";
 import { useSectionInView } from "@/lib/hooks";
 import Modal from "./Modal";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 
 const featuredWorks = [
   {
@@ -65,12 +65,12 @@ const Works = () => {
   const [activeWork, setActiveWork] = useState<null | number>(null);
   const [modal, setModal] = useState({ active: false, index: 0 });
 
-  const { ref } = useSectionInView("Works");
-
+  const workdsRef = useRef(null);
+  const isInView = useInView(workdsRef);
   const works = activeSection === 0 ? selectedWorkds : featuredWorks;
 
   return (
-    <div ref={ref} id="works" className="mb-[25rem] w-full">
+    <div ref={workdsRef} id="works" className="mb-[25rem] w-full">
       <div className="flex flex-row justify-center mb-5">
         <button
           onClick={() => setActiveSection(0)}
@@ -109,7 +109,7 @@ const Works = () => {
               }`}
             >
               <motion.div
-                key={`${work.title}-${index}`}
+                key={`${work.title}-${activeSection}-${index}`}
                 initial={{ y: 100 }}
                 animate={{ y: 0 }}
                 exit={{ y: -100 }}
@@ -119,6 +119,7 @@ const Works = () => {
                 <p className={`text-xs font-thin`}>{work.metaOne}</p>
                 <div className="relative w-full h-[70px] overflow-hidden">
                   <h1
+              
                     className={`text-base absolute inset-0 flex items-center justify-center h-[70px] text-[3rem] md:text-[5rem] lg:text-[6rem] text-center transition-transform duration-300 group-hover:-translate-y-[100%]`}
                   >
                     {work.title}

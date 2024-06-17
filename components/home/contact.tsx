@@ -1,31 +1,80 @@
-"use client";
-
 import React from "react";
-import { useSectionInView } from "@/lib/hooks";
+import Image from "next/image";
+import BRIGHT_TEXT_LOGO_WHITE from "@/public/images/BRIGHT_TEXT_LOGO_WHITE.png";
 
 const Contact = () => {
-  const { ref } = useSectionInView("Contact");
+  const data = [
+    {
+      labels: [
+        "BRIGHT BLOG",
+        "WORKS",
+        "COMPANY",
+        "CULTURE",
+        "RESEARCH",
+        "CONTACT",
+      ],
+    },
+    {
+      labels: ["AUDIA", "REACTYPE", "PRESS"],
+    },
+    {
+      labels: ["LINKEDIN", "GITHUB", "INSTAGRAM"],
+    },
+    {
+      labels: ["© 2024 BRIGHT STUDIO", "NEW YORK, NEW YORK"],
+    },
+  ];
 
   return (
-    <div
-      id="contact"
-      ref={ref}
-      className="h-[30rem] w-full dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative items-center justify-center flex flex-col max-w-[50rem] mt-[4rem] sm:mt-[-15rem]"
-    >
-      <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_5%,black)]" />
-      <h1 className="mb-8 text-[3rem] sm:text-[5rem] font-medium !leading-[1] text-black dark:text-white max-w-[50rem] text-center">
-        <span className="font-semibold uppercase text-center">
-          let&apos;s <span className="hero-gradient-text px-2">create</span>{" "}
-          great things.
-        </span>
-      </h1>
+    <div className="relative w-screen h-[80vh]">
+      <video
+        src="/videos/subway.mp4"
+        autoPlay
+        muted
+        loop
+        className="w-full h-full object-cover absolute top-0 left-0 z-0"
+      ></video>
 
-      <button className="relative inline-flex h-12 overflow-hidden rounded-full p-[2.5px] hover:scale-105 transition shadow-xl">
-        <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#f37a1d_0%,#932cba_50%,#f37a1d_100%)]" />
-        <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-white dark:bg-black px-10 py-1 text-lg font-medium text-black dark:text-white backdrop-blur-3xl">
-          <a href={"https://calendly.com/cyrusburns/30min"}>Contact</a>
-        </span>
-      </button>
+      <div className="absolute top-0 left-0 w-full h-full flex items-end pb-4 z-10">
+        <Image
+          src={BRIGHT_TEXT_LOGO_WHITE}
+          alt="Bright Text Logo"
+          layout="intrinsic"
+          className="w-1/2 aspect-auto absolute -left-[30%] top-20 z-10"
+        />
+
+        <Image
+          src={BRIGHT_TEXT_LOGO_WHITE}
+          alt="Bright Text Logo"
+          layout="intrinsic"
+          className="w-1/2 aspect-auto absolute -right-[20%] top-20"
+        />
+      </div>
+
+      <div className="relative z-20 flex flex-row items-center  h-full px-2 sm:px-10 mt-16">
+        {data.map((item, index) => (
+          <ul key={index} className="w-1/2 ">
+            {item.labels.map((label, labelIndex) => (
+              <li
+                key={labelIndex}
+                className="text-white overflow-hidden group relative h-[25px]"
+              >
+                <p className="text-white text-sm font-thin transition-transform duration-300 group-hover:-translate-y-[100%] mix-blend-difference">
+                  {label}
+                </p>
+
+                <p className="text-white text-sm font-thin transition-transform duration-300 translate-y-[100%] group-hover:translate-y-[-100%]  mix-blend-difference">
+                  {label}
+                </p>
+              </li>
+            ))}
+          </ul>
+        ))}
+      </div>
+
+      <div className="bg-red-500 relative z-20 flex items-center  h-full px-2 sm:px-10 mt-16">
+        <button className="text-5xl text-white">BOOK A CALL</button>
+      </div>
     </div>
   );
 };

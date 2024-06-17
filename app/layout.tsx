@@ -7,7 +7,7 @@ import ThemeContextProvider from "@/context/theme-context";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
 import ProfileHeader from "@/components/profile-header/profile-header";
-import Mouse from "@/components/ui/Mouse";
+
 import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
@@ -46,11 +46,11 @@ export default function RootLayout({
       >
         <ThemeContextProvider>
           <ActiveSectionContextProvider>
+            <Header />
             {children}
             <Toaster position="top-right" />
             <ProfileHeader />
             <ThemeSwitch />
-            <Mouse />
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
       </body>

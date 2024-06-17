@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Contact from "../home/contact";
+import Contact from "../home/Contact";
 import { getAuth, signOut } from "firebase/auth";
 import toast from "react-hot-toast";
 
