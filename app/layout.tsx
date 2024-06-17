@@ -46,11 +46,10 @@ export default function RootLayout({
       >
         <ThemeContextProvider>
           <ActiveSectionContextProvider>
-            <Header />
             {children}
             <Toaster position="top-right" />
-            <ProfileHeader />
-            <ThemeSwitch />
+            {/* <ProfileHeader />
+            <ThemeSwitch /> */}
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
       </body>

@@ -119,3 +119,11 @@ html.dark {
 .blend {
   mix-blend-mode: difference;
 }
+
+/* NAV */
+
+.ol {
+  counter-reset: custom-counter;
+  letter-spacing: -0.06em;
+  line-height: 1;
+}

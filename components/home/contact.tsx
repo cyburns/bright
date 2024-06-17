@@ -59,11 +59,11 @@ const Contact = () => {
                 key={labelIndex}
                 className="text-white overflow-hidden group relative h-[25px]"
               >
-                <p className="text-white text-sm font-thin transition-transform duration-300 group-hover:-translate-y-[100%] mix-blend-difference">
+                <p className="text-white text-sm sm:text-[1rem] font-thin transition-transform duration-300 group-hover:-translate-y-[100%] mix-blend-difference">
                   {label}
                 </p>
 
-                <p className="text-white text-sm font-thin transition-transform duration-300 translate-y-[100%] group-hover:translate-y-[-100%]  mix-blend-difference">
+                <p className="text-white text-sm sm:text-[1rem] font-thin transition-transform duration-300 translate-y-[100%] group-hover:translate-y-[-100%]  mix-blend-difference">
                   {label}
                 </p>
               </li>
