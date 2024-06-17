@@ -7,12 +7,10 @@ import About from "@/components/home/about";
 import Contact from "@/components/home/contact";
 import Footer from "@/components/home/footer";
 import InfiniteWords from "@/components/home/infinite";
-import Intro from "@/components/home/intro";
 import Payment from "@/components/home/payment";
 import { Reviews } from "@/components/home/reviews";
-import SectionDivider from "@/components/home/section-divider";
-import Services from "@/components/home/services";
 import Works from "@/components/home/works";
+import Services from "@/components/home/Services";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);

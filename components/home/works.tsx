@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useSectionInView } from "@/lib/hooks";
+import Modal from "./Modal";
 
 const featuredWorks = [
   {
@@ -14,7 +15,7 @@ const featuredWorks = [
   {
     metaOne: "REACTYPE",
     title: "NO-CODE BUILDER",
-  metaTwo: "WEB",
+    metaTwo: "WEB",
     src: "reactype.dev.png",
     color: "#8C8C8C",
   },
@@ -25,7 +26,6 @@ const featuredWorks = [
     src: "port.com.png",
     color: "#992db4",
   },
-
   {
     metaOne: "PRESS SPORTS",
     title: "GET RECRUITED",
@@ -38,6 +38,7 @@ const featuredWorks = [
 const Works = () => {
   const [activeSection, setActiveSection] = useState(1);
   const [activeWork, setActiveWork] = useState<null | number>(null);
+  const [modal, setModal] = useState({ active: false, index: 0 });
 
   const { ref } = useSectionInView("Works");
 
@@ -67,10 +68,16 @@ const Works = () => {
         {featuredWorks.map((work, index) => (
           <li
             key={index}
-            onMouseEnter={() => setActiveWork(index)}
-            onMouseLeave={() => setActiveWork(null)}
+            onMouseEnter={() => {
+              setModal({ active: true, index });
+              setActiveWork(index);
+            }}
+            onMouseLeave={() => {
+              setModal({ active: false, index });
+              setActiveWork(null);
+            }}
             className={`w-full h-full relative flex items-center justify-between group my-1 overflow-hidden transition duration-300 ${
-              activeWork !== null && activeWork !== index ? "opacity-40" : null
+              activeWork !== null && activeWork !== index && "opacity-40"
             }`}
           >
             <p className={`text-xs font-thin`}>{work.metaOne}</p>
@@ -90,6 +97,8 @@ const Works = () => {
           </li>
         ))}
       </ul>
+
+      <Modal modal={modal} projects={featuredWorks} />
     </div>
   );
 };
