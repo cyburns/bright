@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useRef, useState, forwardRef } from "react";
-import { useSectionInView } from "@/lib/hooks";
+import React, { useRef, useState } from "react";
 import Modal from "./Modal";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 

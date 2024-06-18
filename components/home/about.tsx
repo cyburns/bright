@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef } from "react";
-import { useSectionInView } from "@/lib/hooks";
 import { useInView, motion } from "framer-motion";
 import { Cormorant_Garamond } from "next/font/google";
 
@@ -53,7 +52,7 @@ export default function About() {
     >
       <div className="w-full">
         <h1 className="text-xl sm:text-4xl font-extralight sm:font-medium mb-1 mt-7">
-        ✦ WHO WE ARE
+          ✦ WHO WE ARE
         </h1>
       </div>
       <div

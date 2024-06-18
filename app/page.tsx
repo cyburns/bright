@@ -5,7 +5,7 @@ import Hero from "@/components/home/Hero";
 import About from "@/components/home/About";
 import Contact from "@/components/home/Contact";
 import InfiniteWords from "@/components/home/infinite";
-import Works from "@/components/home/works";
+import Works from "@/components/home/Works";
 import Services from "@/components/home/Services";
 
 export default function Home() {

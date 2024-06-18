@@ -1,6 +1,6 @@
-import BlogHeader from "@/app/(blog)/blog/header";
+import BlogHeader from "@/components/blog/header";
 import React from "react";
-import Posts from "./posts";
+import Posts from "../../../components/blog/posts";
 
 const page = () => {
   return (

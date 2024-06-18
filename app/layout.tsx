@@ -1,11 +1,8 @@
 import "./globals.css";
 import ActiveSectionContextProvider from "@/context/active-section-context";
-import Footer from "@/components/home/footer";
-import ThemeSwitch from "@/components/home/theme-switch";
 import ThemeContextProvider from "@/context/theme-context";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
-import ProfileHeader from "@/components/profile-header/profile-header";
 
 import { Poppins } from "next/font/google";
 import MouseAndNav from "@/components/ui/MouseAndNav";
@@ -49,8 +46,6 @@ export default function RootLayout({
             <MouseAndNav />
             {children}
             <Toaster position="top-right" />
-            {/* <ProfileHeader />
-            <ThemeSwitch /> */}
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
       </body>

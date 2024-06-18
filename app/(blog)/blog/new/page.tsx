@@ -1,5 +1,5 @@
 import React from "react";
-import CreatePost from "./create-post";
+import CreatePost from "../../../../components/post/create-post";
 
 const page = () => {
   return (

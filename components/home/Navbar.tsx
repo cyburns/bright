@@ -5,7 +5,6 @@ import gsap from "gsap";
 import Link from "next/link";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { FIREBASE_AUTH } from "@/FirebaseConfig";
-import useGetPostById from "@/hooks/postHooks/useGetPostById";
 import useGetUserById from "@/hooks/userHooks/useGetUserById";
 
 const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
@@ -117,7 +116,7 @@ const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
             </li>
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>
-              <a href="">+1 413 854 3541</a>
+              <a href="">+1 [413] 85-3541</a>
             </li>
           </ul>
         </div>

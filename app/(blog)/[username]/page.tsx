@@ -1,5 +1,5 @@
 import React from "react";
-import Profile from "@/app/(blog)/[username]/profile";
+import Profile from "@/components/profile/profile";
 
 const Page = () => {
   return (

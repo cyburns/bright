@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useEffect, useState } from "react";
 import BRIGHT_TEXT_LOGO from "@/public/images/BRIGHT_TEXT_LOGO.png";
 import BRIGHT_TEXT_LOGO_WHITE from "@/public/images/BRIGHT_TEXT_LOGO_WHITE.png";
 import { useTheme } from "@/context/theme-context";
@@ -26,10 +26,8 @@ const words = ["Creativity", "Imagination", "Innovation"];
 
 const Hero = () => {
   const { theme } = useTheme();
+  const [isClient, setIsClient] = useState(false);
   const isMobile = useMediaQuery("(max-width: 768px)");
-  const end = window.innerHeight;
-  const multiplier = isMobile ? 0.2 : 1;
-
   const BB = useRef(null);
   const RR = useRef(null);
   const II = useRef(null);
@@ -37,8 +35,17 @@ const Hero = () => {
   const HH = useRef(null);
   const TT = useRef(null);
 
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   useLayoutEffect(() => {
+    if (!isClient) return;
+
     gsap.registerPlugin(ScrollTrigger);
+
+    const end = window.innerHeight;
+    const multiplier = isMobile ? 0.2 : 1;
 
     gsap.to(BB.current, {
       scrollTrigger: {
@@ -114,7 +121,7 @@ const Hero = () => {
       x: 100,
       y: -100 * multiplier,
     });
-  }, []);
+  }, [isClient, isMobile]);
 
   return (
     <div className="h-screen w-screen relative text-black dark:text-white">

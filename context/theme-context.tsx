@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, createContext, useContext } from "react";
 
-type Theme = "light" | "dark";
+type Theme = "light" | "light";
 
 type ThemeContextProviderProps = {
   children: React.ReactNode;
@@ -22,13 +22,13 @@ export default function ThemeContextProvider({
 
   const toggleTheme = () => {
     if (theme === "light") {
-      setTheme("dark");
-      window.localStorage.setItem("theme", "dark");
-      document.documentElement.classList.add("dark");
+      setTheme("light");
+      window.localStorage.setItem("theme", "light");
+      document.documentElement.classList.add("light");
     } else {
       setTheme("light");
       window.localStorage.setItem("theme", "light");
-      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove("light");
     }
   };
 
@@ -38,12 +38,12 @@ export default function ThemeContextProvider({
     if (localTheme) {
       setTheme(localTheme);
 
-      if (localTheme === "dark") {
-        document.documentElement.classList.add("dark");
+      if (localTheme === "light") {
+        document.documentElement.classList.add("light");
       }
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setTheme("dark");
-      document.documentElement.classList.add("dark");
+    } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+      setTheme("light");
+      document.documentElement.classList.add("light");
     }
   }, []);
 
