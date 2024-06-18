@@ -2,9 +2,6 @@
 
 import Image from "next/image";
 import React, { useLayoutEffect, useRef, useEffect, useState } from "react";
-import BRIGHT_TEXT_LOGO from "@/public/images/BRIGHT_TEXT_LOGO.png";
-import BRIGHT_TEXT_LOGO_WHITE from "@/public/images/BRIGHT_TEXT_LOGO_WHITE.png";
-import { useTheme } from "@/context/theme-context";
 import { FlipWords } from "../ui/flip-words";
 import { Cormorant_Garamond } from "next/font/google";
 import gsap from "gsap";
@@ -25,7 +22,6 @@ const corm = Cormorant_Garamond({
 const words = ["Creativity", "Imagination", "Innovation"];
 
 const Hero = () => {
-  const { theme } = useTheme();
   const [isClient, setIsClient] = useState(false);
   const isMobile = useMediaQuery("(max-width: 768px)");
   const BB = useRef(null);
