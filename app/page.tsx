@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 import Hero from "@/components/home/Hero";
 import About from "@/components/home/About";
 import Contact from "@/components/home/Contact";
-import InfiniteWords from "@/components/home/infinite";
 import Works from "@/components/home/Works";
 import Services from "@/components/home/Services";
+import InfiniteWords from "@/components/home/infinite";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
