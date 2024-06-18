@@ -93,10 +93,6 @@ const Contact = () => {
           </ul>
         ))}
       </div>
-
-      <div className="bg-red-500 relative z-20 flex items-center  h-full px-2 sm:px-10 mt-16">
-        <button className="text-5xl text-white">BOOK A CALL</button>
-      </div>
     </div>
   );
 };

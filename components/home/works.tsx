@@ -25,37 +25,37 @@ const featuredWorks = [
     src: "port.com.png",
   },
   {
-    metaOne: "PRESS SPORTS",
-    title: "GET RECRUITED",
+    metaOne: "PRESS",
+    title: "SPORTS",
     metaTwo: "[MOBILE]",
-    src: "officestudio.png",
+    src: "press.com.png",
   },
 ];
 
 const selectedWorkds = [
   {
+    metaOne: "SEATR",
+    title: "FOOOOOD",
+    metaTwo: "[MOBILE]",
+    src: "seatr.png",
+  },
+  {
     metaOne: "CODESHARE",
-    title: "GEEK OUT",
-    metaTwo: "[WEB]",
+    title: "SHARE YOUR CODE",
+    metaTwo: "[WEB/MOBILE]",
     src: "Codeshare-port-pic.png",
   },
   {
     metaOne: "PORTFOLIO",
-    title: "PINK AND GREEN",
-    metaTwo: "[WEB]",
+    title: "PINK + GREEN",
+    metaTwo: "[WEB/DESIGN]",
     src: "cpd.com2.png",
-  },
-  {
-    metaOne: "SEATR",
-    title: "LOVE OF FOOD",
-    metaTwo: "[MOBILE]",
-    src: "seatr.png",
   },
 
   {
-    metaOne: "OFFICE STUDIO",
-    title: "DESIGN STUDIO",
-    metaTwo: "[WEB]",
+    metaOne: "OFFICE",
+    title: "STUDIO",
+    metaTwo: "[WEB/DESIGN]",
     src: "officestudio.png",
   },
 ];
@@ -104,7 +104,7 @@ const Works = () => {
                 setModal({ active: false, index });
                 setActiveWork(null);
               }}
-              className={`w-full h-full relative flex items-center justify-between group my-1 overflow-hidden transition duration-300 ${
+              className={`w-full h-full relative flex items-center group my-1 overflow-hidden transition duration-300 ${
                 activeWork !== null && activeWork !== index && "opacity-40"
               }`}
             >
@@ -116,21 +116,20 @@ const Works = () => {
                 transition={{ duration: 0.5 }}
                 className="w-full h-full flex items-center justify-center"
               >
-                <p className={`text-xs font-thin`}>{work.metaOne}</p>
+                <p className={`text-xs font-thin min-w-sm`}>{work.metaOne}</p>
                 <div className="relative w-full h-[70px] overflow-hidden">
                   <h1
-              
-                    className={`text-base absolute inset-0 flex items-center justify-center h-[70px] text-[3rem] md:text-[5rem] lg:text-[6rem] text-center transition-transform duration-300 group-hover:-translate-y-[100%]`}
+                    className={`text-base absolute inset-0 flex items-center justify-center h-[70px] text-[2.1rem] md:text-[5rem] lg:text-[6rem] text-center transition-transform duration-300 group-hover:-translate-y-[100%]`}
                   >
                     {work.title}
                   </h1>
                   <h1
-                    className={`text-base absolute inset-0 flex items-center justify-center h-[70px] text-[3rem] md:text-[5rem] lg:text-[6rem] text-center transition-transform duration-300 translate-y-[100%] group-hover:translate-y-0`}
+                    className={`text-base absolute inset-0 flex items-center justify-center h-[70px] text-[2.1rem] md:text-[5rem] lg:text-[6rem] text-center transition-transform duration-300 translate-y-[100%] group-hover:translate-y-0`}
                   >
                     {work.title}
                   </h1>
                 </div>
-                <p className={`text-xs font-thin`}>{work.metaTwo}</p>
+                <p className={`text-xs font-thin min-w-sm`}>{work.metaTwo}</p>
               </motion.div>
             </li>
           ))}
