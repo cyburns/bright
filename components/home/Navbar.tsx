@@ -1,5 +1,6 @@
 import React, { forwardRef, useEffect } from "react";
 import gsap from "gsap";
+import Link from "next/link";
 
 const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
   useEffect(() => {
@@ -39,9 +40,9 @@ const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
           <ul className="z-[999999]" ref={ref as any}>
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>
-              <a href="/">
+              <Link href="/">
                 BRIGHT- <br /> STUDIO
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -49,13 +50,13 @@ const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
           <ul className="z-[999999]">
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>
-              <a href="">INDEX</a>
+              <Link href="/">INDEX</Link>
             </li>
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>
-              <a href="">
+              <Link href="/">
                 STUDIO<sup>tm</sup>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -63,7 +64,7 @@ const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
           <ul className="z-[999999]">
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>
-              <a href="">blog[tt]</a>
+              <a href="">blog [bb]</a>
             </li>
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>
@@ -87,11 +88,11 @@ const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
           <ul className="z-[999999]">
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>
-              <a href="">LinkedIn</a>
+              <a href="https://www.linkedin.com/in/cyburns/">LinkedIn</a>
             </li>
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>
-              <a href="">GitHub</a>
+              <a href="https://github.com/cyburns">GitHub</a>
             </li>
           </ul>
         </div>

@@ -59,7 +59,7 @@ const Mouse = ({ stickyEl }: any) => {
       animate={{
         x: mousePosition.x,
         y: mousePosition.y,
-        width: isHovered ? MOUSE_DIM * 40 : MOUSE_DIM * 16,
+        width: isHovered ? MOUSE_DIM * 50 : MOUSE_DIM * 16,
         height: MOUSE_DIM * 16,
         borderRadius: isHovered ? 0 : "50%",
       }}

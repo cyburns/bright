@@ -2,13 +2,13 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Hero from "@/components/home/Hero";
-import Navbar from "@/components/home/Navbar";
 import About from "@/components/home/About";
 import Contact from "@/components/home/Contact";
 import InfiniteWords from "@/components/home/infinite";
 import Works from "@/components/home/works";
 import Services from "@/components/home/Services";
 import Mouse from "@/components/ui/Mouse";
+import Navbar from "@/components/home/Navbar";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);

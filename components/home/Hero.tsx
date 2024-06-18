@@ -131,7 +131,7 @@ const Hero = () => {
         </h1>
       </div>
 
-      <div className="flex flex-row absolute h-[5rem] sm:h-[15vw] gap-2 pb-4  bottom-0 left-5 bg-image">
+      <div className="flex flex-row absolute h-[5rem] sm:h-[18vw] gap-2 pb-4  bottom-0 left-5 bg-image">
         <Image
           ref={BB}
           src={B}
