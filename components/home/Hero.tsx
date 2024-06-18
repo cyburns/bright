@@ -19,7 +19,7 @@ import { useMediaQuery } from "@mui/material";
 
 const corm = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["300", "400", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const words = ["Creativity", "Imagination", "Innovation"];
