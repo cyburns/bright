@@ -1,5 +1,4 @@
-import React, { useRef } from "react";
-import { useSectionInView } from "@/lib/hooks";
+import React from "react";
 import { Cormorant_Garamond } from "next/font/google";
 
 const corm = Cormorant_Garamond({
@@ -50,13 +49,8 @@ const gridData = [
 ];
 
 export default function Services() {
-  const services = useRef(null);
-
   return (
-    <section
-      ref={services}
-      className="leading-8 scroll-mt-28 mt-32 w-full mb-0 sm:mb-10"
-    >
+    <section className="leading-8 scroll-mt-28 mt-32 w-full mb-0 sm:mb-10">
       <div className="border-b-2 border-black dark:border-white w-full">
         <h1 className="text-xl sm:text-4xl font-extralight sm:font-medium mb-1 mt-7">
           ✦ SERVICES
