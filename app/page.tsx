@@ -7,6 +7,7 @@ import Services from "@/components/home/services";
 import InfiniteWords from "@/components/home/infinite";
 import Works from "@/components/home/works";
 import Contact from "@/components/home/contact";
+import Preloader from "@/components/home/preloader";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,13 +19,14 @@ export default function Home() {
     })();
 
     setTimeout(() => {
-      setIsLoading(false);
+      setIsLoading(true);
       window.scrollTo(0, 0);
     }, 2000);
   }, []);
 
   return (
     <main className="flex flex-col items-center px-5 overflow-hidden">
+      {isLoading && <Preloader />}
       <Hero />
       <About />
       <Services />
