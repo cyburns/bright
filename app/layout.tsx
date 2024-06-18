@@ -1,9 +1,8 @@
 import "./globals.css";
-import ActiveSectionContextProvider from "@/context/active-section-context";
 import ThemeContextProvider from "@/context/theme-context";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
-
+import Contact from "@/components/home/contact";
 import { Poppins } from "next/font/google";
 import MouseAndNav from "@/components/ui/MouseAndNav";
 
@@ -42,11 +41,10 @@ export default function RootLayout({
         className={`${poppins.className} bg-white text-gray-950 relative  dark:bg-black dark:text-white dark:text-opacity-90`}
       >
         <ThemeContextProvider>
-          <ActiveSectionContextProvider>
-            <MouseAndNav />
-            {children}
-            <Toaster position="top-right" />
-          </ActiveSectionContextProvider>
+          <MouseAndNav />
+          {children}
+          <Contact />
+          <Toaster position="top-right" />
         </ThemeContextProvider>
       </body>
     </html>

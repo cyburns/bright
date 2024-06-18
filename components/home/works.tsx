@@ -3,61 +3,8 @@
 import React, { useRef, useState } from "react";
 import Modal from "./modal";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-
-const featuredWorks = [
-  {
-    metaOne: "AUDIA",
-    title: "SHARE MUSIC",
-    metaTwo: "[MOBILE]",
-    src: "getaudia.com.png",
-  },
-  {
-    metaOne: "REACTYPE",
-    title: "NO-CODE BUILDER",
-    metaTwo: "[WEB]",
-    src: "reactype.dev.png",
-  },
-  {
-    metaOne: "PORTFOLIO",
-    title: "ViCTORY MODE",
-    metaTwo: "[SHOWCASE]",
-    src: "port.com.png",
-  },
-  {
-    metaOne: "PRESS",
-    title: "SPORTS",
-    metaTwo: "[MOBILE]",
-    src: "press.com.png",
-  },
-];
-
-const selectedWorkds = [
-  {
-    metaOne: "SEATR",
-    title: "FOOOOOD",
-    metaTwo: "[MOBILE]",
-    src: "seatr.png",
-  },
-  {
-    metaOne: "CODESHARE",
-    title: "SHARE YOUR CODE",
-    metaTwo: "[WEB/MOBILE]",
-    src: "Codeshare-port-pic.png",
-  },
-  {
-    metaOne: "PORTFOLIO",
-    title: "PINK + GREEN",
-    metaTwo: "[WEB/DESIGN]",
-    src: "cpd.com2.png",
-  },
-
-  {
-    metaOne: "OFFICE",
-    title: "STUDIO",
-    metaTwo: "[WEB/DESIGN]",
-    src: "officestudio.png",
-  },
-];
+import Link from "next/link";
+import { works } from "@/lib/data";
 
 const Works = () => {
   const [activeSection, setActiveSection] = useState(1);
@@ -66,7 +13,8 @@ const Works = () => {
 
   const workdsRef = useRef(null);
   const isInView = useInView(workdsRef);
-  const works = activeSection === 0 ? selectedWorkds : featuredWorks;
+  const worksArray =
+    activeSection === 0 ? works.selectedWorkds : works.featuredWorks;
 
   return (
     <div ref={workdsRef} id="works" className="mb-[25rem] w-full">
@@ -92,7 +40,7 @@ const Works = () => {
 
       <ul className="w-full relative h-[70px]">
         <AnimatePresence mode="wait">
-          {works.map((work, index) => (
+          {worksArray.map((work: any, index: number) => (
             <li
               key={index}
               onMouseEnter={() => {
@@ -116,7 +64,10 @@ const Works = () => {
                 className="w-full h-full flex items-center justify-center"
               >
                 <p className={`text-xs font-thin min-w-sm`}>{work.metaOne}</p>
-                <div className="relative w-full h-[70px] overflow-hidden">
+                <Link
+                  href={`/works/${work.id}`}
+                  className="relative w-full h-[70px] overflow-hidden"
+                >
                   <h1
                     className={`text-base absolute inset-0 flex items-center justify-center h-[70px] text-[2.1rem] md:text-[5rem] lg:text-[6rem] text-center transition-transform duration-300 group-hover:-translate-y-[100%]`}
                   >
@@ -127,7 +78,7 @@ const Works = () => {
                   >
                     {work.title}
                   </h1>
-                </div>
+                </Link>
                 <p className={`text-xs font-thin min-w-sm`}>{work.metaTwo}</p>
               </motion.div>
             </li>
@@ -135,7 +86,7 @@ const Works = () => {
         </AnimatePresence>
       </ul>
 
-      <Modal modal={modal} projects={works} />
+      <Modal modal={modal} projects={worksArray} />
     </div>
   );
 };

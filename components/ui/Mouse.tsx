@@ -68,7 +68,7 @@ const Mouse = ({ stickyEl }: any) => {
         damping: 25,
         stiffness: 400,
       }}
-      className="fixed top-0 left-0 z-50 pointer-events-none bg-white dark:bg-white  mix-blend-difference"
+      className="fixed top-0 left-0 z-50 pointer-events-none bg-white dark:bg-white  mix-blend-difference hidden sm:block"
     ></motion.div>
   );
 };

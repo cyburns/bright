@@ -6,7 +6,6 @@ import About from "@/components/home/about";
 import Services from "@/components/home/services";
 import InfiniteWords from "@/components/home/infinite";
 import Works from "@/components/home/works";
-import Contact from "@/components/home/contact";
 import Preloader from "@/components/home/preloader";
 
 export default function Home() {
@@ -32,7 +31,6 @@ export default function Home() {
       <Services />
       <InfiniteWords />
       <Works />
-      <Contact />
     </main>
   );
 }
