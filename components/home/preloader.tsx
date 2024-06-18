@@ -23,7 +23,7 @@ const Preloader = () => {
     finalNum.textContent = "0";
     counter3.appendChild(finalNum);
 
-    const animate = (counter, duration, delay = 0) => {
+    const animate = (counter: any, duration: number, delay = 0) => {
       const numHeight = counter.querySelector(".num").clientHeight;
       const totalDist =
         (counter.querySelectorAll(".num").length - 1) * numHeight;
@@ -99,18 +99,18 @@ const Preloader = () => {
     gsap.to(".loading-screen", {
       opacity: 0,
       delay: 6,
-      duration: 0.75,
+      duration: 1,
       display: "none",
     });
   };
 
-  useEffect(() => {
-    loader();
-    barAnimation();
-  }, []);
+    useEffect(() => {
+      loader();
+      barAnimation();
+    }, []);
 
   return (
-    <div className="loading-screen z-[999999]">
+    <div className="loading-screen z-[9999] overflow-hidden">
       <div className="loader">
         <div className="loader-1 bar" />
         <div className="loader-2 bar" />

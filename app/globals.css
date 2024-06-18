@@ -136,6 +136,7 @@ html.dark {
   color: #fff;
   width: 100%;
   height: 100%;
+  display: flex;
 }
 
 .loading-screen {
@@ -180,19 +181,19 @@ html.dark {
   width: 300px;
   transform: translate(-50%, -50%);
   display: flex;
-  background-color: rgb(80, 80, 80);
+  background-color: #505050;
 }
 
 .loader-1 {
   position: relative;
   background-color: #fff;
-  width: 150px; 
+  width: 0px;
 }
 
 .loader-2 {
   position: relative;
   background-color: #fff;
-  width: 150px; 
+  width: 0px;
   margin-left: -1px;
 }
 
