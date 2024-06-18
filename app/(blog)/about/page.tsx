@@ -1,5 +1,5 @@
 import React from "react";
-import About from "@/components/home/About";
+import About from "@/components/home/about";
 import BrightHeaderText from "@/components/ui/bright-header-text";
 
 const page = () => {

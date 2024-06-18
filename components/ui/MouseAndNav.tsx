@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import Mouse from "@/components/ui/Mouse";
-import Navbar from "@/components/home/Navbar";
+import Navbar from "@/components/home/navbar";
 
 const MouseAndNav = () => {
   const stickyEl = useRef(null);

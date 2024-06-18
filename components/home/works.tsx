@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import Modal from "./Modal";
+import Modal from "./modal";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 
 const featuredWorks = [

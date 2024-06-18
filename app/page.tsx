@@ -1,13 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Hero from "../components/home/Hero";
-import About from "../components/home/About";
-import Contact from "../components/home/Contact";
-import Works from "../components/home/Works";
-import Services from "../components/home/Services";
-import InfiniteWords from "../components/home/infinite";
-
+import Hero from "@/components/home/hero";
+import About from "@/components/home/about";
+import Services from "@/components/home/services";
+import InfiniteWords from "@/components/home/infinite";
+import Works from "@/components/home/works";
+import Contact from "@/components/home/contact";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
