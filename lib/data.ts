@@ -73,7 +73,7 @@ export const works = {
       id: "03",
       photoPathName: "cb",
       metaOne: "PORTFOLIO",
-      title: "ViCTORY MODE",
+      title: "MAX SATURATION",
       metaTwo: "[SHOWCASE]",
       src: "port.com.png",
       imgs: ["CB_LARGE_TWO.png"],
