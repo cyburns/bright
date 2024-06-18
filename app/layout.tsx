@@ -13,9 +13,7 @@ const poppins = Poppins({
 
 export const metadata = {
   title: "BRIGHT",
-  description: "Fast web development",
-  image: "https://example.com/image.jpg",
-  url: "https://example.com",
+  description: "Design and Development Agency",
 };
 
 export default function RootLayout({
