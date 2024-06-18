@@ -1,8 +1,19 @@
-import React, { forwardRef, useEffect } from "react";
+"use client";
+
+import React, { forwardRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import Link from "next/link";
+import { User, getAuth, onAuthStateChanged } from "firebase/auth";
+import { FIREBASE_AUTH } from "@/FirebaseConfig";
+import useGetPostById from "@/hooks/postHooks/useGetPostById";
+import useGetUserById from "@/hooks/userHooks/useGetUserById";
 
 const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
+  const [pathName, setPathName] = useState<string>("signup");
+  const [profilePath, setProfilePath] = useState<"Profile" | "Signup">(
+    "Profile"
+  );
+
   useEffect(() => {
     const listItems = document.querySelectorAll("li");
     const animations = new Map();
@@ -33,10 +44,36 @@ const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
     });
   }, []);
 
+  const auth = getAuth();
+  const currentUserId = auth.currentUser?.uid;
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(
+      FIREBASE_AUTH,
+      (user: User | null) => {
+        if (!user) {
+          setPathName("signup");
+          setProfilePath("Signup");
+        }
+      }
+    );
+
+    return () => unsubscribe();
+  }, []);
+
+  const { userProfile, isUserLoading } = useGetUserById(currentUserId) as any;
+
+  useEffect(() => {
+    if (isUserLoading || !userProfile) return;
+
+    setPathName(`/${userProfile.username}`);
+    setProfilePath("Profile");
+  }, [userProfile, isUserLoading]);
+
   return (
     <nav className="pt-[20px] fixed left-0 top-0 w-full z-[9999] h-[62px] mix-blend-difference text-white box-border text-[12px]">
       <div className="w-full px-[25px] mx-auto flex flex-row justify-between">
-        <div className="flex flex-wrap w-[37.5%]">
+        <div className="flex flex-wrap w-1/3 sm:w-[37.5%]">
           <ul className="z-[999999]" ref={ref as any}>
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>
@@ -50,7 +87,7 @@ const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
           <ul className="z-[999999]">
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>
-              <Link href="/">INDEX</Link>
+              <Link href="/">shop</Link>
             </li>
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>
@@ -60,15 +97,15 @@ const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
             </li>
           </ul>
         </div>
-        <div className="flex flex-wrap w-[12.5%] uppercase">
+        <div className="flex flex-wrap w-1/3 sm:w-[12.5%] uppercase">
           <ul className="z-[999999]">
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>
-              <a href="">blog [bb]</a>
+              <Link href="/blog">blog [bb]</Link>
             </li>
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>
-              <a href="">shop</a>
+              <Link href={pathName}>{profilePath}</Link>
             </li>
           </ul>
         </div>
@@ -84,7 +121,7 @@ const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
             </li>
           </ul>
         </div>
-        <div className="flex justify-end md:justify-start flex-wrap w-[25%] sm:w-[12.5%] uppercase">
+        <div className="flex justify-end md:justify-start flex-wrap sm:w-1/3 lg:w-[25%] md:w-[12.5%] uppercase">
           <ul className="z-[999999]">
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>

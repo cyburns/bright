@@ -1,4 +1,3 @@
-import Header from "@/components/navbar/header";
 import "./globals.css";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import Footer from "@/components/home/footer";
@@ -9,6 +8,7 @@ import Script from "next/script";
 import ProfileHeader from "@/components/profile-header/profile-header";
 
 import { Poppins } from "next/font/google";
+import MouseAndNav from "@/components/ui/MouseAndNav";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -46,6 +46,7 @@ export default function RootLayout({
       >
         <ThemeContextProvider>
           <ActiveSectionContextProvider>
+            <MouseAndNav />
             {children}
             <Toaster position="top-right" />
             {/* <ProfileHeader />

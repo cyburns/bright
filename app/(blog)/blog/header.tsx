@@ -19,7 +19,7 @@ const BlogHeader = () => {
   }, [currentUser, auth]);
 
   return (
-    <section className="flex flex-col items-center pt-5">
+    <section className="flex flex-col items-center pt-16">
       <div className="max-w-[50rem] sm:mb-0 flex flex-row  px-4 sm:px-0 pt-[7rem] sm:pt-10 justify-between w-full">
         <div className="flex flex-row items-center">
           <AlternateEmailOutlined sx={{ fontSize: "2.5rem" }} />
