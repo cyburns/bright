@@ -104,10 +104,10 @@ const Preloader = () => {
     });
   };
 
-    useEffect(() => {
-      loader();
-      barAnimation();
-    }, []);
+  useEffect(() => {
+    loader();
+    barAnimation();
+  }, []);
 
   return (
     <div className="loading-screen z-[9999] overflow-hidden">

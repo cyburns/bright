@@ -19,7 +19,7 @@ const featuredWorks = [
   },
   {
     metaOne: "PORTFOLIO",
-    title: "VOCTORY MODE",
+    title: "ViCTORY MODE",
     metaTwo: "[SHOWCASE]",
     src: "port.com.png",
   },

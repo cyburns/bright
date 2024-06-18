@@ -10,7 +10,7 @@ import Contact from "@/components/home/contact";
 import Preloader from "@/components/home/preloader";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -19,7 +19,7 @@ export default function Home() {
     })();
 
     setTimeout(() => {
-      setIsLoading(true);
+      setIsLoading(false);
       window.scrollTo(0, 0);
     }, 2000);
   }, []);
