@@ -35,16 +35,16 @@ const data = [
 
 const Contact = () => {
   return (
-    <div className="relative w-screen h-[80vh]">
+    <div className="relative w-screen max-w-[100vw] h-[80vh] overflow-hidden ">
       <video
         src="/videos/subway.mp4"
         autoPlay
         muted
         loop
-        className="w-full h-full object-cover absolute top-0 left-0 z-0"
+        className="w-full h-full object-cover absolute top-0 left-0 z-0 overflow-x-hidden"
       ></video>
 
-      <div className="absolute top-0 left-0 w-full h-full flex items-end pb-4 z-10">
+      <div className="absolute top-0 left-0 w-full h-full flex items-end pb-4 z-10 overflow-x-hidden max-w-[100vw]">
         <Image
           src={BRIGHT_TEXT_LOGO_WHITE}
           alt="Bright Text Logo"

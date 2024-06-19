@@ -36,7 +36,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${poppins.className} bg-white text-gray-950 relative  dark:bg-black dark:text-white dark:text-opacity-90`}
+        className={`${poppins.className} bg-white text-gray-950 relative  dark:bg-black dark:text-white dark:text-opacity-90 example`}
       >
         <ThemeContextProvider>
           <MouseAndNav />

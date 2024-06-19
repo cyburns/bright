@@ -9,7 +9,7 @@ import Works from "@/components/home/works";
 import Preloader from "@/components/home/preloader";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center px-5 overflow-hidden">
-      {isLoading && <Preloader />}
+      {isLoading && <Preloader setIsLoading={setIsLoading} />}
       <Hero />
       <About />
       <Services />

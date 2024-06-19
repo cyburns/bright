@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import gsap from "gsap";
 
-const Preloader = () => {
+const Preloader = ({ setIsLoading }: any) => {
   const loader = () => {
     const counter3 = document.querySelector(".counter-3");
 
@@ -101,6 +101,9 @@ const Preloader = () => {
       delay: 6,
       duration: 1,
       display: "none",
+      onComplete: () => {
+        setIsLoading(false);
+      },
     });
   };
 
@@ -110,7 +113,7 @@ const Preloader = () => {
   }, []);
 
   return (
-    <div className="loading-screen z-[9999] overflow-hidden">
+    <div className="loading-screen z-[9999] overflow-hidden flex">
       <div className="loader">
         <div className="loader-1 bar" />
         <div className="loader-2 bar" />
