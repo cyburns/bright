@@ -43,7 +43,7 @@ export const works = {
         "audia-app.png",
         "main-audia.png",
       ],
-      header: "Share and discover msuic with friends.",
+      header: "Share and discover music with friends.",
       subheader:
         "Audia is a mobile application that allows users to share and discover music with friends. Users can create playlists, share songs, and follow friends to see what they are listening to.",
       thirdHeading:
@@ -71,15 +71,16 @@ export const works = {
     },
     {
       id: "03",
-      photoPathName: "cb",
+      photoPathName: "jeremy",
       metaOne: "PORTFOLIO",
-      title: "MAX SATURATION",
+      title: "HOLLYWOOD",
       metaTwo: "[SHOWCASE]",
-      src: "port.com.png",
-      imgs: ["CB_LARGE_TWO.png"],
-      header: "A showcase of excellence in design and motion.",
+      src: "jeremy-b.png",
+      imgs: ["jeremy-camera.png", "jeremy-site.png"],
+      header:
+        "Jeremy, a famous actor, had bright create a space for all of his works. A showcase of excellence in design and motion.",
       subheader:
-        "Victory Mode is a portfolio project that demonstrates exceptional design skills, both in static visuals and dynamic motion. It highlights creative approaches and meticulous attention to detail.",
+        "This is a portfolio project that demonstrates exceptional design skills, both in static visuals and dynamic motion. It highlights creative approaches and meticulous attention to detail.",
       thirdHeading:
         "Explore a variety of design elements and animations that bring projects to life, showcasing a deep understanding of both aesthetics and functionality.",
     },
@@ -160,4 +161,19 @@ export const works = {
         "This site was built with next.js, tailwindcss, and Firebase.",
     },
   ],
+};
+
+const cbObj = {
+  id: "03",
+  photoPathName: "cb",
+  metaOne: "PORTFOLIO",
+  title: "MAX SATURATION",
+  metaTwo: "[SHOWCASE]",
+  src: "port.com.png",
+  imgs: ["CB_LARGE_TWO.png"],
+  header: "A showcase of excellence in design and motion.",
+  subheader:
+    "Victory Mode is a portfolio project that demonstrates exceptional design skills, both in static visuals and dynamic motion. It highlights creative approaches and meticulous attention to detail.",
+  thirdHeading:
+    "Explore a variety of design elements and animations that bring projects to life, showcasing a deep understanding of both aesthetics and functionality.",
 };
