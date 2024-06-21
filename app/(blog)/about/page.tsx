@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect } from "react";
 import About from "@/components/home/about";
 import BrightHeaderText from "@/components/ui/bright-header-text";
