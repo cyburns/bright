@@ -86,7 +86,7 @@ const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
           <ul className="z-[999999]">
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>
-              <Link href="/">shop</Link>
+              <Link href="/shop">shop templates</Link>
             </li>
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>
