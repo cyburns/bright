@@ -91,7 +91,7 @@ export const works = {
       title: "SPORTS",
       metaTwo: "[MOBILE]",
       src: "press.com.png",
-      imgs: ["press-cover.png", "press-phones-2.png"],
+      imgs: ["press-cover.png", "press-phones-2.png", "press-bg.png"],
       header: "Easy Place to Capture Sport Moments",
       subheader:
         "Press Sports was started by former athletes to give athletes (or their parents) a place to capture and share sports moments. You’ll find kids playing sports for the first time, as well as 1st round draft picks. Mostly importantly, you’ll find a supportive community.",
@@ -137,7 +137,7 @@ export const works = {
       title: "PINK + GREEN",
       metaTwo: "[WEB/DESIGN]",
       src: "cpd.com2.png",
-      imgs: ["green-pink.jpg", "cpd.com2.png"],
+      imgs: ["green-pink.jpg", "cpd.com2.png", "pink-green-port.png"],
       header:
         "Christine is a marketing director who needed a site to hold all of her best work.",
       subheader:
@@ -148,11 +148,11 @@ export const works = {
     {
       id: "08",
       photoPathName: "saas",
-      metaOne: "MARKETING",
+      metaOne: "SAAS",
       title: "SAAAAAAS",
       metaTwo: "[WEB/DESIGN]",
       src: "saas 1.png",
-      imgs: ["saas.png", "new-rt-comp-render.png", "moving-bubble.png"],
+      imgs: ["saas-grad-2.png", "saas.png", "bright-app-icon-lg.png"],
       header:
         "DSGN is a SaaS company that needed a site to showcase their product. They wanted a site that was clean and professional.",
       subheader:

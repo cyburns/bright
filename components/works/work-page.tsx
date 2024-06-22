@@ -7,9 +7,26 @@ import { ScrollTrigger } from "gsap/all";
 import { works } from "@/lib/data";
 import Link from "next/link";
 import { IoCaretBack } from "react-icons/io5";
+import { useTransform, useScroll, motion } from "framer-motion";
 
 const WorkPage = ({ id }: any) => {
   const [scrolledPercent, setScrolledPercent] = useState("0");
+
+  const totalPageHeight = document.documentElement.scrollHeight;
+  const viewportHeight = window.innerHeight;
+  const scrollableDistance = totalPageHeight - viewportHeight - 900;
+
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, scrollableDistance * 0.8]
+  );
 
   const work =
     works.featuredWorks.find((work) => work.id === id) ||
@@ -20,24 +37,6 @@ const WorkPage = ({ id }: any) => {
   const mainImgRef = useRef(null);
 
   gsap.registerPlugin(ScrollTrigger);
-
-  const updateScrollAnimation = () => {
-    const totalPageHeight = document.documentElement.scrollHeight;
-    const viewportHeight = window.innerHeight;
-    const scrollableDistance = totalPageHeight - viewportHeight - 400;
-
-    const movementMultiplier = 0.6;
-
-    gsap.to(".moving-percent", {
-      y: scrollableDistance * movementMultiplier,
-      scrollTrigger: {
-        trigger: ".moving-percent",
-        start: "top bottom",
-        end: `+=${totalPageHeight}`,
-        scrub: true,
-      },
-    });
-  };
 
   useLayoutEffect(() => {
     gsap.to(mainImgRef.current, {
@@ -55,27 +54,16 @@ const WorkPage = ({ id }: any) => {
       start: 0,
       end: "bottom top",
       onUpdate: (self: any) => {
+        console.log(self.progress);
+
         const scrollProgress = self.progress * 100;
         setScrolledPercent(scrollProgress.toFixed(0));
       },
     });
-
-    const resizeObserver = new ResizeObserver(updateScrollAnimation);
-    resizeObserver.observe(document.documentElement);
-
-    updateScrollAnimation();
-
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, [work]);
-
-  useEffect(() => {
-    updateScrollAnimation();
   }, [work]);
 
   return (
-    <div className="mt-32 sm:mt-48 mb-48">
+    <div ref={container} className="mt-32 sm:mt-48 mb-48">
       <div className="flex w-full items-center justify-between">
         <button className="border-white text-white hover:text-black mix-blend-difference border-[1px] px-4 py-2 flex flex-row mb-10 hover:bg-white transition duration-300">
           <Link href="/" className="flex flex-row items-center justify-between">
@@ -99,13 +87,18 @@ const WorkPage = ({ id }: any) => {
           height={0}
           className="object-cover w-screen"
           alt={work.metaOne}
+          placeholder="blur"
+          blurDataURL={`/images/${work.photoPathName}/${work.imgs[0]}`}
         />
       </div>
 
-      <div className="text-white mix-blend-difference text-[20vw] sm:text-[8vw] flex flex-row justify-between moving-percent z-[99999999]">
+      <motion.div
+        style={{ y }}
+        className="text-white mix-blend-difference text-[20vw] sm:text-[8vw] flex flex-row justify-between z-[99999999]"
+      >
         <p>{scrolledPercent}</p>
         <p>/100</p>
-      </div>
+      </motion.div>
 
       <div className="mt-24 flex flex-col sm:flex-row justify-between">
         <h2 className="text-white mix-blend-difference text-5xl sm:w-1/3 z-30">
