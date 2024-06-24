@@ -204,3 +204,22 @@ html.dark {
 .bar {
   height: 100%;
 }
+
+/* HERO */
+
+.section-home-header {
+  position: absolute;
+  bottom: calc(100% + var(calc(clamp(5rem, 7.5vw, 10rem) * 0.2)) - 1px);
+  left: calc(var(calc(clamp(5rem, 7.5vw, 10rem) * 0.2)) * -1);
+  height: calc(
+    (
+        (
+            (100 * var(100vh)) -
+              (100% + (var(calc(clamp(5rem, 7.5vw, 10rem) * 0.2)) * 2))
+          ) / 2
+      ) + 2px
+  );
+  width: calc(100% + (var(calc(clamp(5rem, 7.5vw, 10rem) * 0.2)) * 2));
+  transform-origin: right;
+  pointer-events: all;
+}
