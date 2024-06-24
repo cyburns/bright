@@ -158,11 +158,9 @@ const SignUp = () => {
   };
 
   return (
-    <section className="flex justify-center items-center pt-32">
+    <section className="flex justify-center items-center pt-32 mb-56">
       <div className="flex flex-col w-full justify-center items-center max-w-xs">
-        <h1 className="text-[3rem] sm:text-[5rem] font-thin">
-          <span className="hero-gradient-text">BRIGHT</span>
-        </h1>
+        <h1 className="text-[3rem] sm:text-[5rem] font-thin">BRIGHT</h1>
 
         <h2 className="mb-2 text-black dark:text-white text-center">
           Log in or sign up to see and write posts or ask any questions.
