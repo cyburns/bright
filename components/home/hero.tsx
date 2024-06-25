@@ -60,7 +60,7 @@ const Hero = () => {
             autoPlay
             muted
             loop
-            src="https://www.justgowiththeflow.com/media/pages/home/b24e5a08a2-1716146352/flow_short_loop_2024_b_compressed.mp4"
+            src="/videos/bg-movie-4.mp4"
             className="min-h-screen object-cover"
           />
         </div>
@@ -69,7 +69,7 @@ const Hero = () => {
           className={`absolute top-[33%] sm:left-[33.33%] text-2xl sm:text-4xl font-light bg-white ${corm.className} h-[60vh] pt-16 pl-[25%]`}
         ></h1>
         <h1
-          className={`absolute top-[33%] sm:left-[33.33%] text-2xl sm:text-4xl font-light  ${corm.className} h-[60vh] pt-16 pl-[25%]`}
+          className={`absolute top-[30%] sm:left-[33.33%] text-2xl md:text-[4vw] lg:text-[2.5vw] !leading-[1] font-light  ${corm.className} h-[60vh] pt-16 pl-[25%]`}
         >
           Blending
           <FlipWords words={words} /> <br />
