@@ -122,12 +122,12 @@ const CreatePost = () => {
   ];
 
   return (
-    <div className="max-w-[50rem] h-screen w-full mt-32 sm:mt-5 mb-10 pt-10">
+    <div className="max-w-[50rem] w-full mt-32 sm:mt-16 mb-10 pt-10">
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row items-center">
           <AlternateEmailOutlined sx={{ fontSize: "2.5rem" }} />
           <h1 className=" text-[1.5rem] sm:text-[2rem] font-medium !leading-[1] ">
-            <span className="font-semibold uppercase">
+            <span className="font-thin uppercase">
               <span className="hero-gradient-text px-2">BRIGHT</span>blog
             </span>
           </h1>
@@ -159,7 +159,7 @@ const CreatePost = () => {
           }}
         />
       </div>
-      <div className="mt-3 w-full text-black dark:text-white">
+      <div className="mt-3 w-full text-black dark:text-white ">
         <ReactQuill
           value={postContent}
           onChange={setPostContent}

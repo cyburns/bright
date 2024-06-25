@@ -232,3 +232,7 @@ tr:hover {
   background-color: #ffffff;
   color: #000;
 }
+
+.ql-editor {
+  margin-bottom: 20vh;
+}

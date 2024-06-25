@@ -7,6 +7,7 @@ import Services from "@/components/home/services";
 import InfiniteWords from "@/components/home/infinite";
 import Works from "@/components/home/works";
 import Preloader from "@/components/home/preloader";
+import Contact from "@/components/home/contact";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -26,6 +27,7 @@ export default function Home() {
       <Services />
       <InfiniteWords />
       <Works />
+      <Contact />
     </main>
   );
 }

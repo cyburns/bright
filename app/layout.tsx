@@ -1,7 +1,6 @@
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
-import Contact from "@/components/home/contact";
 import { Poppins } from "next/font/google";
 import MouseAndNav from "@/components/ui/MouseAndNav";
 
@@ -39,7 +38,7 @@ export default function RootLayout({
       >
         <MouseAndNav />
         {children}
-        <Contact />
+
         <Toaster position="top-right" />
       </body>
     </html>
