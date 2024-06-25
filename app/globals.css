@@ -223,3 +223,12 @@ html.dark {
   transform-origin: right;
   pointer-events: all;
 }
+
+tr {
+  transition: all 0.3s ease-in-out;
+}
+
+tr:hover {
+  background-color: #ffffff;
+  color: #000;
+}

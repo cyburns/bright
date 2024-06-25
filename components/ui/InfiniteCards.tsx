@@ -1,15 +1,17 @@
 "use client";
 import { cn } from "@/utils/cn";
 import React, { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 
 export const InfiniteCards = ({
   items,
   direction = "left",
   speed = "fast",
+  pauseOnHover = true,
   className,
 }: {
   items: {
-    name: string;
+    name: any;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";

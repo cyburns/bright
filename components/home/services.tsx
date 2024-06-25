@@ -49,37 +49,6 @@ const gridData = [
 ];
 
 export default function Services() {
-  let interval: NodeJS.Timeout | null = null;
-  const alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase();
-
-  const shuffleLetters = (e: any) => {
-    let iteration = 0;
-
-    if (interval !== null) {
-      clearInterval(interval);
-    }
-
-    interval = setInterval(() => {
-      e.target.innerText = e.target.innerText
-        .split("")
-        .map((_: any, index: number) => {
-          if (index < iteration) {
-            return e.target.dataset.value[index];
-          }
-
-          return alphabet[Math.floor(Math.random() * 26)];
-        })
-        .join("");
-
-      if (iteration >= e.target.dataset.value.length) {
-        clearInterval(interval!);
-        interval = null;
-      }
-
-      iteration += 1 / 3;
-    }, 30);
-  };
-
   return (
     <section className="leading-8 scroll-mt-28 mt-32 w-full mb-0 sm:mb-10">
       <div className="border-b-2 border-black dark:border-white w-full">
@@ -94,11 +63,7 @@ export default function Services() {
             <div className="flex  mt-4 text-2xl md:text-4xl  font-thin mb-10 md:mb-44">
               <span className="">{item.key}</span>
             </div>
-            <h2
-              data-value={item.title}
-              onMouseEnter={shuffleLetters}
-              className="text-4xl font-thin"
-            >
+            <h2 data-value={item.title} className="text-4xl font-thin">
               {item.title}
             </h2>
             <h3
@@ -122,7 +87,7 @@ export default function Services() {
         ))}
       </div>
 
-      <div className="hidden md:block">
+      <div className="hidden md:block text-white  mix-blend-difference">
         <table className="min-w-full text-left">
           <tbody>
             <tr className="border-b-[#c1c1c2] border-t-[#c1c1c2] border-b-2 border-t-2">

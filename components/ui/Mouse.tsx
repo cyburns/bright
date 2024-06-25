@@ -61,7 +61,6 @@ const Mouse = ({ stickyEl }: any) => {
         y: mousePosition.y,
         width: isHovered ? MOUSE_DIM * 50 : MOUSE_DIM * 16,
         height: MOUSE_DIM * 16,
-        borderRadius: isHovered ? 0 : "50%",
       }}
       transition={{
         type: "spring",
