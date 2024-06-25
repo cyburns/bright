@@ -1,5 +1,4 @@
 import "./globals.css";
-import ThemeContextProvider from "@/context/theme-context";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
 import Contact from "@/components/home/contact";
@@ -38,12 +37,10 @@ export default function RootLayout({
       <body
         className={`${poppins.className} bg-white text-gray-950 relative  dark:bg-black dark:text-white dark:text-opacity-90 example`}
       >
-        <ThemeContextProvider>
-          <MouseAndNav />
-          {children}
-          <Contact />
-          <Toaster position="top-right" />
-        </ThemeContextProvider>
+        <MouseAndNav />
+        {children}
+        <Contact />
+        <Toaster position="top-right" />
       </body>
     </html>
   );

@@ -12,7 +12,6 @@ const Works = () => {
   const [modal, setModal] = useState({ active: false, index: 0 });
 
   const workdsRef = useRef(null);
-  const isInView = useInView(workdsRef);
   const worksArray =
     activeSection === 0 ? works.selectedWorkds : works.featuredWorks;
 
