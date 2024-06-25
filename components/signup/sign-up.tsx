@@ -16,7 +16,6 @@ import {
 } from "@mui/icons-material";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useRouter } from "next/navigation";
-import useAuthStore from "@/store";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -36,7 +35,6 @@ const SignUp = () => {
 
   const auth = FIREBASE_AUTH;
   const database = FIREBASE_STORE;
-  const loginUser = useAuthStore((state) => state.login);
   const router = useRouter();
 
   const isLoadingSpinner = isLoading ? "pt-3" : "";
@@ -120,8 +118,6 @@ const SignUp = () => {
       router.push("/profile");
       toast.success("Account created successfully. Please verify your email.");
 
-      loginUser(userData);
-
       setEmail("");
       setFullName("");
       setUsername("");
@@ -143,8 +139,6 @@ const SignUp = () => {
         const docRef = doc(database, "users", userCred.user.uid);
         const docSnap = await getDoc(docRef);
         const userData = docSnap.data();
-
-        loginUser(userData);
       }
 
       toast.success("Logged in successfully");

@@ -8,7 +8,6 @@ import useGetUserById from "@/hooks/userHooks/useGetUserById";
 import Image from "next/image";
 import UserPosts from "./user-posts";
 import { defulatPfp } from "@/lib/data";
-import useAuthStore from "@/store";
 import { Verified } from "@mui/icons-material";
 import { FIREBASE_STORAGE, FIREBASE_STORE } from "@/FirebaseConfig";
 import { doc, updateDoc } from "firebase/firestore";
@@ -27,7 +26,6 @@ const Profile = () => {
   const pickerRef = useRef<any>(null);
   const router = useRouter();
   const currentUser = auth.currentUser;
-  const logoutUser = useAuthStore((state) => state.logout);
 
   const { isUsersPostsLoading, usersPosts } = useGetUsersPosts(
     currentUser?.uid
@@ -39,7 +37,6 @@ const Profile = () => {
   const handleLgout = async () => {
     try {
       await signOut(auth);
-      logoutUser();
       router.push("/");
     } catch (error) {
       console.log(error);
