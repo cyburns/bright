@@ -1,11 +1,15 @@
 "use client";
 
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState, LegacyRef } from "react";
 import gsap from "gsap";
 import Link from "next/link";
 import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { FIREBASE_AUTH } from "@/FirebaseConfig";
 import useGetUserById from "@/hooks/userHooks/useGetUserById";
+
+interface UserProfile {
+  username: string;
+}
 
 const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
   const [pathName, setPathName] = useState<string>("signup");
@@ -31,6 +35,7 @@ const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
 
       li.addEventListener("mouseleave", () => {
         const animation = animations.get(li);
+
         if (animation) {
           animation.kill();
           animations.delete(li);
@@ -59,8 +64,10 @@ const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
 
     return () => unsubscribe();
   }, []);
-
-  const { userProfile, isUserLoading } = useGetUserById(currentUserId) as any;
+  const { userProfile, isUserLoading } = useGetUserById(currentUserId) as {
+    userProfile: UserProfile | null;
+    isUserLoading: boolean;
+  };
 
   useEffect(() => {
     if (isUserLoading || !userProfile) return;
@@ -73,7 +80,7 @@ const Navbar = forwardRef<HTMLLIElement>((props, ref) => {
     <nav className="pt-[20px] fixed left-0 top-0 w-full z-[9999] h-[62px] mix-blend-difference text-white box-border text-[12px]">
       <div className="w-full px-[25px] mx-auto flex flex-row justify-between">
         <div className="flex flex-wrap w-1/3 sm:w-[37.5%]">
-          <ul className="z-[999999]" ref={ref as any}>
+          <ul className="z-[999999]" ref={ref as LegacyRef<HTMLUListElement>}>
             <li className="relative">
               <span className="indicator absolute left-[-10px] top-[50%] translate-y-[-50%] w-[5px] h-[5px] bg-white rounded-full opacity-0"></span>
               <Link href="/">

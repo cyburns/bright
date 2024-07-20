@@ -5,6 +5,14 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 
+interface ModalProps {
+  modal: {
+    active: boolean;
+    index: number;
+  };
+  projects: any;
+}
+
 const scaleAnimation = {
   initial: { scale: 0, x: "-50%", y: "-50%" },
   enter: {
@@ -21,7 +29,7 @@ const scaleAnimation = {
   },
 };
 
-export default function Modal({ modal, projects }: any) {
+const Modal = ({ modal, projects }: ModalProps) => {
   const modalContainer = useRef(null);
   const secondModalContainer = useRef(null);
 
@@ -121,4 +129,6 @@ export default function Modal({ modal, projects }: any) {
       </motion.div>
     </>
   );
-}
+};
+
+export default Modal;

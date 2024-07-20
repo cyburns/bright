@@ -6,8 +6,9 @@ import { getAuth } from "firebase/auth";
 import { LuMessageCircle } from "react-icons/lu";
 import { TbShare3 } from "react-icons/tb";
 import toast from "react-hot-toast";
+import { PostProps } from "@/lib/types";
 
-const Buttons = ({ post }: any) => {
+const Buttons = ({ post }: PostProps) => {
   const auth = getAuth();
   const userId = auth.currentUser?.uid;
   const { handleLikePost, isLiked } = useLikePost(post, userId);
@@ -22,9 +23,7 @@ const Buttons = ({ post }: any) => {
   };
 
   const handleShare = () => {
-    navigator.clipboard.writeText(
-      `https://brightdev.vercel.app/blog/${post.id}`
-    );
+    navigator.clipboard.writeText(`https://www.brightdev.dev/blog/${post.id}`);
 
     toast.success("Link copied to clipboard");
   };

@@ -6,8 +6,9 @@ import { estimateReadingTime, calculateElapsedTime } from "@/hooks/utils";
 import parse from "html-react-parser";
 import { Verified } from "@mui/icons-material";
 import Buttons from "./buttons";
+import { PostProps } from "@/lib/types";
 
-const Post = ({ post, isSinglePost }: any) => {
+const Post = ({ post, isSinglePost }: PostProps) => {
   return (
     <div className="mt-10 p-3 border-[#EFEFEF] dark:border-[#161616] border-b-2">
       <Link key={post.id} href={`/blog/${post.id}`}>
@@ -44,7 +45,7 @@ const Post = ({ post, isSinglePost }: any) => {
         </div>
         {isSinglePost && (
           <div className="border-[#EFEFEF] dark:border-[#161616] border-b-2 border-t-2 mb-5 p-1">
-            <Buttons post={post} />
+            <Buttons post={post} isSinglePost={true} />
           </div>
         )}
         <div className="text-black dark:text-white font-semibold text-[2rem] w-full bg-white dark:bg-black !leading-[1.2]">
@@ -60,7 +61,7 @@ const Post = ({ post, isSinglePost }: any) => {
       </Link>
       {!isSinglePost && (
         <div className="mt-3 mb-1">
-          <Buttons post={post} />
+          <Buttons post={post} isSinglePost={false} />
         </div>
       )}
     </div>

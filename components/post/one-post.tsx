@@ -5,7 +5,11 @@ import useGetPostById from "@/hooks/postHooks/useGetPostById";
 import Post from "@/components/post/post";
 import SinglePostSkeleton from "@/components/skeletons/single-post-skeleton";
 
-const OnePost = ({ params }: any) => {
+interface OnePostProps {
+  params: { id: string };
+}
+
+const OnePost = ({ params }: OnePostProps) => {
   const { isPostLoading, onePost } = useGetPostById(params.id);
 
   return (

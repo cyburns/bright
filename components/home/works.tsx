@@ -6,6 +6,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { works } from "@/lib/data";
 
+interface Work {
+  id: string;
+  photoPathName: string;
+  metaOne: string;
+  title: string;
+  metaTwo: string;
+  src: string;
+  imgs: string[];
+  header: string;
+  subheader: string;
+  thirdHeading: string;
+}
+
 const Works = () => {
   const [activeSection, setActiveSection] = useState(1);
   const [activeWork, setActiveWork] = useState<null | number>(null);
@@ -41,7 +54,7 @@ const Works = () => {
 
       <ul className="w-full relative h-[70px]">
         <AnimatePresence mode="wait">
-          {worksArray.map((work: any, index: number) => (
+          {worksArray.map((work: Work, index: number) => (
             <li
               key={index}
               onMouseEnter={() => {

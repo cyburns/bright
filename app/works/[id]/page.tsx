@@ -3,7 +3,13 @@
 import React, { useEffect } from "react";
 import WorkPage from "@/components/works/work-page";
 
-const page = ({ params }: any) => {
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+const page = ({ params }: PageProps) => {
   useEffect(() => {
     (async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;

@@ -3,7 +3,11 @@
 import React, { useEffect } from "react";
 import OnePost from "../../../../components/post/one-post";
 
-const page = ({ params }: any) => {
+interface PageProps {
+  id: string;
+}
+
+const page = ({ params }: { params: PageProps }) => {
   useEffect(() => {
     (async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;

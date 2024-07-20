@@ -4,6 +4,15 @@ import BRIGHT_TEXT_LOGO_WHITE from "@/public/images/BRIGHT_TEXT_LOGO_WHITE.png";
 import Link from "next/link";
 import { footerData } from "@/lib/data";
 
+interface Label {
+  name: string;
+  url?: string;
+}
+
+interface FooterItem {
+  labels: Label[];
+}
+
 const Contact = () => {
   return (
     <div className="relative w-screen max-w-[100vw] h-[80vh] overflow-hidden ">
@@ -32,9 +41,9 @@ const Contact = () => {
       </div>
 
       <div className="relative z-20 flex flex-row items-center  h-full px-2 sm:px-10 mt-32 mix-blend-difference text-white text-sm sm:text-xl md:text-2zxl lg:text-4xl">
-        {footerData.map((item: any, index: number) => (
+        {footerData.map((item: FooterItem, index: number) => (
           <ul key={index} className="w-1/2">
-            {item.labels.map((label: any, labelIndex: number) => (
+            {item.labels.map((label, labelIndex) => (
               <>
                 {!label.url ? (
                   <li

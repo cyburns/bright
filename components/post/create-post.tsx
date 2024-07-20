@@ -42,7 +42,15 @@ const CreatePost = () => {
 
   const { isUserLoading, userProfile } = useGetUserById(
     currentUser?.uid
-  ) as any;
+  ) as unknown as {
+    isUserLoading: boolean;
+    userProfile: {
+      username: string;
+      profilePicture: string;
+      fullName: string;
+      isVerified: boolean;
+    };
+  };
 
   const handlePost = async () => {
     if (
