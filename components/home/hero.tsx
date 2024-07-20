@@ -8,6 +8,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import FullBrightText from "@/public/images/BRIGHT_TEXT_LOGO.png";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const corm = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -26,8 +28,6 @@ const Hero = () => {
 
   useLayoutEffect(() => {
     if (!isClient) return;
-
-    gsap.registerPlugin(ScrollTrigger);
 
     const end = window.innerHeight;
 
@@ -69,7 +69,7 @@ const Hero = () => {
           className={`absolute top-[33%] sm:left-[33.33%] text-2xl sm:text-4xl font-light bg-white ${corm.className} h-[60vh] pt-16 pl-[25%]`}
         ></h1>
         <h1
-          className={`absolute top-[30%] sm:left-[33.33%] text-2xl md:text-[4vw] lg:text-[2.5vw] !leading-[1] font-extralight sm:font-base  ${corm.className} h-[60vh] pt-16 pl-[20%] sm:pl-[25%]`}
+          className={`absolute top-[30%] sm:left-[33.33%] text-2xl md:text-[4vw] lg:text-[2.5vw] !leading-[1.1] font-extralight sm:font-base  ${corm.className} h-[60vh] pt-16 pl-[20%] sm:pl-[25%]`}
         >
           Blending
           <FlipWords words={words} /> <br />

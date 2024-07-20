@@ -1,30 +1,53 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-const Preloader = ({ setIsLoading }: any) => {
-  const loader = () => {
-    const counter3 = document.querySelector(".counter-3");
+const fakeNumbers = Array.from({ length: 10 }, (_, i) => i);
 
-    if (!counter3) return;
+interface PreloaderProps {
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-    for (let i = 0; i < 2; i++) {
-      for (let j = 0; j < 10; j++) {
-        const num = document.createElement("div");
-        num.classList.add("num");
-        num.textContent = String(j);
-        counter3.appendChild(num);
+const Preloader = ({ setIsLoading }: PreloaderProps) => {
+  const counter1Ref = useRef<HTMLDivElement | null>(null);
+  const counter2Ref = useRef<HTMLDivElement | null>(null);
+  const counter3Ref = useRef<HTMLDivElement | null>(null);
+  const loadingScreenRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const initCounters = (counterRef: React.RefObject<HTMLDivElement>) => {
+      const counter = counterRef.current;
+      if (!counter) return;
+
+      for (let i = 0; i < 2; i++) {
+        for (let j = 0; j < 10; j++) {
+          const num = document.createElement("div");
+          num.classList.add("num");
+          num.textContent = String(j);
+          counter.appendChild(num);
+        }
       }
-    }
 
-    const finalNum = document.createElement("div");
-    finalNum.classList.add("num");
-    finalNum.textContent = "0";
-    counter3.appendChild(finalNum);
+      const finalNum = document.createElement("div");
+      finalNum.classList.add("num");
+      finalNum.textContent = "0";
+      counter.appendChild(finalNum);
+    };
 
-    const animate = (counter: any, duration: number, delay = 0) => {
-      const numHeight = counter.querySelector(".num").clientHeight;
+    initCounters(counter3Ref);
+
+    const animate = (
+      counterRef: React.RefObject<HTMLDivElement>,
+      duration: number,
+      delay = 0
+    ) => {
+      const counter = counterRef.current;
+
+      if (!counter) return;
+
+      const numHeight =
+        counter.querySelector<HTMLDivElement>(".num")?.clientHeight || 0;
       const totalDist =
         (counter.querySelectorAll(".num").length - 1) * numHeight;
 
@@ -36,12 +59,10 @@ const Preloader = ({ setIsLoading }: any) => {
       });
     };
 
-    animate(counter3, 3);
-    animate(document.querySelector(".counter-2"), 4);
-    animate(document.querySelector(".counter-1"), 1, 2);
-  };
+    animate(counter3Ref, 3);
+    animate(counter2Ref, 4);
+    animate(counter1Ref, 1, 2.9);
 
-  const barAnimation = () => {
     gsap.to(".digit", {
       top: "-150px",
       stagger: {
@@ -105,49 +126,39 @@ const Preloader = ({ setIsLoading }: any) => {
         setIsLoading(false);
       },
     });
-  };
-
-  useEffect(() => {
-    loader();
-    barAnimation();
-  }, []);
+  }, [setIsLoading]);
 
   return (
-    <div className="loading-screen z-[9999] overflow-hidden flex">
+    <div
+      ref={loadingScreenRef}
+      className="loading-screen z-[9999] overflow-hidden flex"
+    >
       <div className="loader">
         <div className="loader-1 bar" />
         <div className="loader-2 bar" />
       </div>
 
       <div className="counter">
-        <div className="counter-1 digit">
+        <div ref={counter1Ref} className="counter-1 digit">
           <div className="num">0</div>
           <div className="num num1offset1">1</div>
         </div>
-        <div className="counter-2 digit">
+        <div ref={counter2Ref} className="counter-2 digit">
           <div className="num">0</div>
           <div className="num num1offset2">1</div>
-          <div className="num">2</div>
-          <div className="num">3</div>
-          <div className="num">4</div>
-          <div className="num">5</div>
-          <div className="num">6</div>
-          <div className="num">7</div>
-          <div className="num">8</div>
-          <div className="num">9</div>
+          {fakeNumbers.slice(2).map((num) => (
+            <div key={`num-1-${num}`} className="num">
+              {num}
+            </div>
+          ))}
           <div className="num">0</div>
         </div>
-        <div className="counter-3 digit">
-          <div className="num">0</div>
-          <div className="num">1</div>
-          <div className="num">2</div>
-          <div className="num">3</div>
-          <div className="num">4</div>
-          <div className="num">5</div>
-          <div className="num">6</div>
-          <div className="num">7</div>
-          <div className="num">8</div>
-          <div className="num">9</div>
+        <div ref={counter3Ref} className="counter-3 digit">
+          {fakeNumbers.map((num) => (
+            <div key={`num-2-${num}`} className="num">
+              {num}
+            </div>
+          ))}
         </div>
       </div>
     </div>

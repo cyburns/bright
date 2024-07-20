@@ -1,7 +1,16 @@
 "use client";
 import { cn } from "@/utils/cn";
 import React, { useEffect, useState, useRef } from "react";
-import Image from "next/image";
+
+interface InfiniteCardsProps {
+  items: {
+    name: string;
+  }[];
+  direction?: "left" | "right";
+  speed?: "fast" | "normal" | "slow";
+  pauseOnHover?: boolean;
+  className?: string;
+}
 
 export const InfiniteCards = ({
   items,
@@ -9,15 +18,7 @@ export const InfiniteCards = ({
   speed = "fast",
   pauseOnHover = true,
   className,
-}: {
-  items: {
-    name: any;
-  }[];
-  direction?: "left" | "right";
-  speed?: "fast" | "normal" | "slow";
-  pauseOnHover?: boolean;
-  className?: string;
-}) => {
+}: InfiniteCardsProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLUListElement>(null);
 

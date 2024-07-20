@@ -92,6 +92,7 @@ export default function Modal({ modal, projects }: any) {
           ))}
         </div>
       </motion.div>
+
       <motion.div
         ref={secondModalContainer}
         variants={scaleAnimation}

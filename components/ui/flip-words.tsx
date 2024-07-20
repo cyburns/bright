@@ -3,17 +3,20 @@
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/utils/cn";
+
+interface FlipWordsProps {
+  words: string[];
+  duration?: number;
+  className?: string;
+}
+
 let interval: any;
 
 export const FlipWords = ({
   words,
   duration = 3000,
   className,
-}: {
-  words: string[];
-  duration?: number;
-  className?: string;
-}) => {
+}: FlipWordsProps) => {
   const [currentWord, setCurrentWord] = useState(words[0]);
 
   useEffect(() => {
@@ -26,11 +29,12 @@ export const FlipWords = ({
 
   const startAnimation = () => {
     let i = 0;
+
     interval = setInterval(() => {
       i++;
-      if (i === words.length) {
-        i = 0;
-      }
+
+      if (i === words.length) i = 0;
+
       const word = words[i];
       setCurrentWord(word);
     }, duration);

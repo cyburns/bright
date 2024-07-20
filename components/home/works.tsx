@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import Modal from "./modal";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { works } from "@/lib/data";
 
@@ -26,7 +26,9 @@ const Works = () => {
         >
           ✦ LATEST WORKS
         </button>
+
         <p className="mx-7">/</p>
+
         <button
           onClick={() => setActiveSection(1)}
           className={`${

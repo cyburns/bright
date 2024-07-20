@@ -1,4 +1,4 @@
-export const testimonials = [
+export const serviceWords = [
   {
     name: "Wireframing",
   },
@@ -177,3 +177,93 @@ const cbObj = {
   thirdHeading:
     "Explore a variety of design elements and animations that bring projects to life, showcasing a deep understanding of both aesthetics and functionality.",
 };
+
+export const gridDataSmall = [
+  {
+    key: "01",
+    title: "DESIGN",
+    description:
+      "Design is at the very core of everything we do. We balance form, function, and feeling to develop brands in the digital space.",
+    attributes: [
+      "Brand Identity",
+      "UX Design",
+      "UI Design",
+      "Motion Design",
+      "Wireframing",
+    ],
+  },
+  {
+    key: "02",
+    title: "DEVELOPMENT",
+    description:
+      "We develop websites and apps with user experience, modern technology and business strategy in mind.",
+    attributes: [
+      "Frontend",
+      "Backend",
+      "Serverless",
+      "Ecommerce",
+      "Native Mobile",
+    ],
+  },
+  {
+    key: "03",
+    title: "STRATEGY",
+    description:
+      "We are a strategy-driven studio. We utilize data, industry experience, and instinct to create branded experiences that perform.",
+    attributes: [
+      "Creative Direction",
+      "Research",
+      "Discovery",
+      "Insights",
+      "Analytics",
+    ],
+  },
+];
+
+export const gridDataLarge = [
+  {
+    attributes: ["Brand Identity", "Frontend", "Creative Direction"],
+  },
+  {
+    attributes: ["UX Design", "Backend", "Research"],
+  },
+  {
+    attributes: ["UI Design", "Server", "Discovery"],
+  },
+  {
+    attributes: ["Motion Design", , "Ecommerce", "Insights"],
+  },
+  {
+    attributes: ["Wireframing", "Native Mobile", "Analytics"],
+  },
+];
+
+export const footerData = [
+  {
+    labels: [
+      { name: "BLOG", url: "/blog" },
+      { name: "WORKS" },
+      { name: "COMPANY" },
+      { name: "CULTURE" },
+      { name: "RESEARCH" },
+      { name: "CONTACT" },
+    ],
+  },
+  {
+    labels: [
+      { name: "AUDIA", url: "https://www.getaudia.com/" },
+      { name: "REACTYPE", url: "https://www.reactype.dev/" },
+      { name: "PRESS", url: "https://presssportsapp.com/" },
+    ],
+  },
+  {
+    labels: [
+      { name: "LINKEDIN", url: "https://www.linkedin.com/in/cyburns/" },
+      { name: "GITHUB", url: "https://github.com/cyburns" },
+      { name: "INSTAGRAM", url: "https://www.instagram.com/cyrusburns/" },
+    ],
+  },
+  {
+    labels: [{ name: "© 2024 BRIGHT STUDIO" }, { name: "NEW YORK, NEW YORK" }],
+  },
+];
