@@ -26,6 +26,7 @@ export default function RootLayout({
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-EHK6K1XR52"
         ></Script>
+
         <Script id="google-anal">
           {`window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -38,7 +39,6 @@ export default function RootLayout({
       >
         <MouseAndNav />
         {children}
-
         <Toaster position="top-right" />
       </body>
     </html>
