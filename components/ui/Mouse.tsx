@@ -3,7 +3,11 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const Mouse = ({ stickyEl }: any) => {
+interface MouseProps {
+  stickyEl: React.RefObject<HTMLDivElement>;
+}
+
+const Mouse = ({ stickyEl }: MouseProps) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
 

@@ -117,6 +117,7 @@ const SignUp = () => {
 
       router.push("/profile");
       toast.success("Account created successfully. Please verify your email.");
+      localStorage.setItem("userData", JSON.stringify(userData));
 
       setEmail("");
       setFullName("");
@@ -139,6 +140,8 @@ const SignUp = () => {
         const docRef = doc(database, "users", userCred.user.uid);
         const docSnap = await getDoc(docRef);
         const userData = docSnap.data();
+
+        localStorage.setItem("userData", JSON.stringify(userData));
       }
 
       toast.success("Logged in successfully");

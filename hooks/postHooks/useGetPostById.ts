@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { getDoc, doc } from "firebase/firestore";
 import { FIREBASE_STORE } from "@/FirebaseConfig";
+import { PostType } from "@/lib/types";
 
 const useGetPostById = (postId: string) => {
   const [isPostLoading, setIsPostLoading] = useState(true);
-  const [onePost, setOnePost] = useState<any>(null);
+  const [onePost, setOnePost] = useState<PostType[] | null>(null);
   const database = FIREBASE_STORE;
 
   const getPost = async () => {
@@ -14,7 +15,7 @@ const useGetPostById = (postId: string) => {
       const userRef = await getDoc(doc(database, "posts", postId));
 
       if (userRef.exists()) {
-        const postData = userRef.data();
+        const postData = userRef.data() as PostType;
         postData.id = userRef.id;
         setOnePost([postData]);
       }

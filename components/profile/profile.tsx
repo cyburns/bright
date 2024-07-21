@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, ChangeEvent } from "react";
 import { getAuth, signOut } from "firebase/auth";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -23,16 +23,15 @@ const Profile = () => {
   const auth = getAuth();
   const storage = FIREBASE_STORAGE;
   const database = FIREBASE_STORE;
-  const pickerRef = useRef<any>(null);
+  const pickerRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const currentUser = auth.currentUser;
 
   const { isUsersPostsLoading, usersPosts } = useGetUsersPosts(
     currentUser?.uid
-  ) as any;
-  const { isUserLoading, userProfile } = useGetUserById(
-    currentUser?.uid
-  ) as any;
+  );
+
+  const { isUserLoading, userProfile } = useGetUserById(currentUser?.uid);
 
   const handleLgout = async () => {
     try {
@@ -44,25 +43,25 @@ const Profile = () => {
     }
   };
 
-  const onCaptureImage = async (e: any) => {
+  const onCaptureImage = async (e: ChangeEvent<HTMLInputElement>) => {
     setIsImageLoading(true);
 
     try {
       const reader = new FileReader();
-      if (e.target.files[0]) {
+      if (e.target.files && e.target.files[0]) {
         reader.readAsDataURL(e.target.files[0]);
-        reader.onload = async (readerEvent: any) => {
-          setPickedImage(readerEvent.target.result);
+        reader.onload = async (readerEvent: ProgressEvent<FileReader>) => {
+          const result = readerEvent.target?.result as string;
+          setPickedImage(result);
 
-          if (readerEvent.target.result) {
-            await uploadImageToFirebase(readerEvent.target.result);
+          if (result) {
+            await uploadImageToFirebase(result);
           }
 
           toast.success("Image uploaded successfully.");
         };
       }
     } catch (error) {
-      console.error(error);
       toast.error("Error uploading image. Please try again later.");
     } finally {
       setIsImageLoading(false);
@@ -85,12 +84,13 @@ const Profile = () => {
         });
       }
     } catch (error) {
-      console.error(error);
       toast.error("Error uploading image. Please try again later.");
     }
   };
 
   const handleCopy = () => {
+    if (!userProfile) return;
+
     navigator.clipboard.writeText(
       `https://www.brightdev.dev/${userProfile.username}`
     );
@@ -108,7 +108,11 @@ const Profile = () => {
           <div className="max-w-[40rem] w-full flex items-center justify-between pt-10">
             <div className="flex flex-col sm:flex-row">
               <Image
-                onClick={() => pickerRef.current.click()}
+                onClick={() => {
+                  if (pickerRef.current) {
+                    pickerRef.current.click();
+                  }
+                }}
                 src={userProfile.profilePicture || defulatPfp}
                 alt="profile picture"
                 width={110}
@@ -152,7 +156,7 @@ const Profile = () => {
 
           <div className="mt-4 w-full flex flex-row justify-around">
             <button
-              onClick={() => pickerRef.current.click()}
+              onClick={() => pickerRef.current?.click()}
               className="text-black dark:text-white text-base font-medium bg-[#EFEFEF] dark:bg-[#161616] w-full mx-1 rounded-lg p-2 hover:bg-opacity-40 dark:hover:bg-[#343434] transition"
             >
               Edit profile

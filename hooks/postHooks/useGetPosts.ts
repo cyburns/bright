@@ -1,10 +1,11 @@
 import { collection, getDocs, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { FIREBASE_STORE } from "@/FirebaseConfig";
+import { PostType } from "@/lib/types";
 
 const useGetPosts = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [posts, setPosts] = useState<any[]>([]);
+  const [posts, setPosts] = useState<PostType[]>([]);
   const database = FIREBASE_STORE;
 
   const getMainFeedPosts = async () => {
@@ -13,10 +14,10 @@ const useGetPosts = () => {
     try {
       const postsQuery = query(collection(database, "posts"));
       const querySnapshot = await getDocs(postsQuery);
-      const fetchedPosts: any[] = [];
+      const fetchedPosts: PostType[] = [];
 
       querySnapshot.forEach((doc) => {
-        const postData = doc.data();
+        const postData = doc.data() as PostType;
 
         postData.id = doc.id;
         fetchedPosts.push(postData);

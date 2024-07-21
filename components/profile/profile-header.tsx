@@ -15,9 +15,7 @@ export default function ProfileHeader() {
   const auth = getAuth();
   const currentUser = auth.currentUser;
 
-  const { isUserLoading, userProfile } = useGetUserById(
-    currentUser?.uid
-  ) as any;
+  const { isUserLoading, userProfile } = useGetUserById(currentUser?.uid);
 
   useEffect(() => {
     if (currentUser) {
@@ -38,7 +36,7 @@ export default function ProfileHeader() {
       </div>
     );
   }
-  
+
   return (
     <button className="fixed top-5 right-[1rem] flex items-center justify-center transition-all ">
       <Link
@@ -48,6 +46,7 @@ export default function ProfileHeader() {
         <IoCreateOutline className="text-[#a3a3a7] text-2xl mr-1 " />
         <h1 className="text-[#a3a3a7] mr-7">Write</h1>
       </Link>
+
       <Link href={`${userProfile.username}`} className="gradient-sm">
         <Image
           src={userProfile.profilePicture || defulatPfp}

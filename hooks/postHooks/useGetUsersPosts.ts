@@ -9,10 +9,11 @@ import {
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { FIREBASE_STORE } from "@/FirebaseConfig";
+import { PostType } from "@/lib/types";
 
-const useGetUsersPosts = (userId: any) => {
+const useGetUsersPosts = (userId: string) => {
   const [isUsersPostsLoading, setUsersPostsIsLoading] = useState<boolean>(true);
-  const [usersPosts, setUsersPosts] = useState<any[]>([]);
+  const [usersPosts, setUsersPosts] = useState<PostType[]>([]);
   const [isLastPost, setIsLastPost] = useState<boolean>(false);
   const database = FIREBASE_STORE;
 

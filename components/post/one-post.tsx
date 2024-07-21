@@ -4,6 +4,7 @@ import React from "react";
 import useGetPostById from "@/hooks/postHooks/useGetPostById";
 import Post from "@/components/post/post";
 import SinglePostSkeleton from "@/components/skeletons/single-post-skeleton";
+import { PostType } from "@/lib/types";
 
 interface OnePostProps {
   params: { id: string };
@@ -22,8 +23,8 @@ const OnePost = ({ params }: OnePostProps) => {
         <div className="mt-10 p-3 max-w-[40rem] mb-32">
           {onePost ? (
             <>
-              {onePost.map((post: any) => (
-                <Post key={post.id} post={post} isSinglePost={true} />
+              {onePost.map((post: PostType, index: number) => (
+                <Post key={index} post={post} isSinglePost={true} />
               ))}
             </>
           ) : (

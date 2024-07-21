@@ -9,7 +9,11 @@ import Link from "next/link";
 import { IoCaretBack } from "react-icons/io5";
 import { useTransform, useScroll, motion } from "framer-motion";
 
-const WorkPage = ({ id }: any) => {
+interface WorkPageProps {
+  id: string;
+}
+
+const WorkPage = ({ id }: WorkPageProps) => {
   const [scrolledPercent, setScrolledPercent] = useState("0");
 
   const totalPageHeight = document.documentElement.scrollHeight;
@@ -53,7 +57,7 @@ const WorkPage = ({ id }: any) => {
       scrub: true,
       start: 0,
       end: "bottom top",
-      onUpdate: (self: any) => {
+      onUpdate: (self) => {
         console.log(self.progress);
 
         const scrollProgress = self.progress * 100;

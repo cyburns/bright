@@ -10,7 +10,7 @@ interface FlipWordsProps {
   className?: string;
 }
 
-let interval: any;
+let interval: NodeJS.Timeout;
 
 export const FlipWords = ({
   words,

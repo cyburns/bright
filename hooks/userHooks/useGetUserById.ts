@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { getDoc, doc } from "firebase/firestore";
 import { FIREBASE_STORE } from "@/FirebaseConfig";
+import { UserType } from "@/lib/types";
 
 const useGetUserById = (userId: any) => {
   const [isUserLoading, setIsLoading] = useState(true);
-  const [userProfile, setUserProfile] = useState(null);
+  const [userProfile, setUserProfile] = useState<UserType | null>(null);
   const database = FIREBASE_STORE;
 
   useEffect(() => {
