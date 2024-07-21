@@ -10,7 +10,7 @@ interface ModalProps {
     active: boolean;
     index: number;
   };
-  projects: any;
+  projects: { src: string }[];
 }
 
 const scaleAnimation = {
@@ -85,7 +85,7 @@ const Modal = ({ modal, projects }: ModalProps) => {
           style={{ top: modal.index * -100 + "%" }}
           className="h-full w-full relative transition-top duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]"
         >
-          {projects.map((project: any, index: number) => (
+          {projects.map((project: { src: string }, index: number) => (
             <div
               className="h-full w-full flex items-center justify-center bg-transparent pointer-events-none  filter grayscale"
               key={`modal_${index}`}
@@ -112,7 +112,7 @@ const Modal = ({ modal, projects }: ModalProps) => {
           style={{ top: modal.index * -100 + "%" }}
           className="h-full w-full relative transition-top duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]"
         >
-          {projects.map((project: any, index: number) => (
+          {projects.map((project: { src: string }, index: number) => (
             <div
               className="h-full w-full flex items-center justify-center bg-transparent pointer-events-none"
               key={`modal_${index}`}

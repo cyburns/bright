@@ -21,8 +21,8 @@ const Posts = () => {
               Posts
             </h2>
           </div>
-          {posts.map((post) => (
-            <Post key={post.id} post={post} />
+          {posts.map((post, index) => (
+            <Post key={index} post={post} isSinglePost={false} />
           ))}
         </div>
       )}

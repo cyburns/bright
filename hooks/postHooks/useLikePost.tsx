@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { FIREBASE_STORE } from "@/FirebaseConfig";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { PostType } from "@/lib/types";
 
-const useLikePost = (post: any, userId: any) => {
+const useLikePost = (post: PostType, userId: string) => {
   const [isLiking, setIsLiking] = useState(false);
   const [likes, setLikes] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(post.likes.includes(userId));

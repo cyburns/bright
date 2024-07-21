@@ -45,14 +45,14 @@ const useGetUsersPosts = (userId: string) => {
       }
 
       const querySnapshot = await getDocs(postsQuery);
-      const fetchedPosts: any[] = [];
+      const fetchedPosts: PostType[] = [];
 
       if (querySnapshot.size < 12) {
         setIsLastPost(true);
       }
 
       querySnapshot.forEach((doc) => {
-        const postData = doc.data();
+        const postData = doc.data() as PostType;
         postData.id = doc.id;
         fetchedPosts.push(postData);
       });

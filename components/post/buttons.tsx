@@ -11,7 +11,7 @@ import { PostProps } from "@/lib/types";
 const Buttons = ({ post }: PostProps) => {
   const auth = getAuth();
   const userId = auth.currentUser?.uid;
-  const { handleLikePost, isLiked } = useLikePost(post, userId);
+  const { handleLikePost, isLiked } = useLikePost(post, userId || "");
 
   const handleLike = () => {
     if (!auth.currentUser) {
@@ -24,7 +24,6 @@ const Buttons = ({ post }: PostProps) => {
 
   const handleShare = () => {
     navigator.clipboard.writeText(`https://www.brightdev.dev/blog/${post.id}`);
-
     toast.success("Link copied to clipboard");
   };
 

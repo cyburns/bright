@@ -28,7 +28,7 @@ const Profile = () => {
   const currentUser = auth.currentUser;
 
   const { isUsersPostsLoading, usersPosts } = useGetUsersPosts(
-    currentUser?.uid
+    currentUser?.uid || ""
   );
 
   const { isUserLoading, userProfile } = useGetUserById(currentUser?.uid);
